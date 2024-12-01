@@ -1,0 +1,19 @@
+{
+    "name": "bb/blendingbites",
+    "description": "school assignment project",
+    "type": "project",
+    "license": "none",
+    "autoload": {
+        "psr-4": {
+            "Bb\\Blendingbites\\": "_classes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "seinn"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

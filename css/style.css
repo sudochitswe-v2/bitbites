@@ -1,0 +1,20 @@
+:root {
+    --primary: #65020a;
+    --secondary: #ff90a6;
+}
+
+
+.bb-text-primary {
+    color: var(--primary) !important;
+}
+
+.bb-text-secondary {
+    color: var(--secondary) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+.btn-primary:active {}

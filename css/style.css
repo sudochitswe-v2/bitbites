@@ -1,6 +1,6 @@
 :root {
     --primary: #65020a;
-    --secondary: #ff90a6;
+    --secondary: #b6a9a9;
 }
 
 
@@ -15,6 +15,20 @@
 .btn-primary {
     background-color: var(--primary) !important;
     border-color: var(--primary) !important;
+}
+
+.btn-outline-primary {
+    color: white !important;
+    border: 1px solid black !important;
+    color: var(--primary) !important;
+    transition: background-color 0.3s ease, transform 0.2s ease !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary) !important;
+    color: var(--secondary) !important;
+    transform: scale(1.05) !important;
+    cursor: pointer !important;
 }
 
 .btn-primary:active {}

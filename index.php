@@ -17,8 +17,7 @@
 </header>
 
 <body>
-
-
+    <?php include '_layout/home/home.php' ?>
 
     <?php include '_layout/footer.php' ?>
 </body>

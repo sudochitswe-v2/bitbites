@@ -12,7 +12,10 @@
             <span class="fa fa-bars"></span>
         </button> -->
 
-        <?php $isAuth = isset($_SESSION['user']) ?>
+        <?php
+        $isAuth = isset($_SESSION['user']);
+        $user = $isAuth ? $_SESSION['user'] : null;
+        ?>
 
         <?php if ($isAuth): ?>
             <div class="dropdown d-lg-none">
@@ -20,7 +23,7 @@
                     id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="https://via.placeholder.com/40" alt="Avatar" class="rounded-circle me-2" width="40"
                         height="40">
-                    <span>John Doe</span>
+                    <span><?= $user->name ?></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -32,18 +35,17 @@
                 </ul>
             </div>
         <?php else : ?>
-            <a href="" class="btn btn-primary py-2 px-4 d-lg-none">Login</a>
+            <a href="login.php" class="btn btn-primary py-2 px-4 d-lg-none">Login</a>
         <?php endif ?>
 
     </div>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0 pe-4">
-            <a href="" class="nav-item nav-link active">Home</a>
+            <a href="" class="nav-item nav-link active">Recipe</a>
             <a href="" class="nav-item nav-link">About</a>
-            <a href="" class="nav-item nav-link">Service</a>
-            <a href="" class="nav-item nav-link">Menu</a>
-            <a href="" class="nav-item nav-link">Pages</a>
-            <a href="" class="nav-item nav-link">Contact</a>
+            <a href="" class="nav-item nav-link">Community</a>
+            <a href="" class="nav-item nav-link">Contact Us</a>
+            <a href="" class="nav-item nav-link">Resources</a>
         </div>
 
         <?php if ($isAuth): ?>
@@ -52,7 +54,7 @@
                     id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="https://via.placeholder.com/40" alt="Avatar" class="rounded-circle me-2" width="40"
                         height="40">
-                    <span>John Doe</span>
+                    <span><?= $user->name ?></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -64,6 +66,6 @@
                 </ul>
             </div>
         <?php else : ?>
-            <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">Login</a>
+            <a href="login.php" class="btn btn-primary py-2 px-4 d-none d-lg-block">Login</a>
         <?php endif ?>
     </div>

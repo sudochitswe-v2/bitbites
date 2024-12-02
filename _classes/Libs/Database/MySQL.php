@@ -1,8 +1,10 @@
 <?php
 
-namespace Bb\Blendingbites\Helpers\Libs\Database;
+namespace Bb\Blendingbites\Libs\Database;
 
 use Exception;
+use PDO;
+use PDOException;
 
 class MySQL
 {
@@ -23,10 +25,20 @@ class MySQL
     public function connect()
     {
         try {
-            $this->db = mysqli_connect($this->dbhost, $this->dbuser, $this->dbpass, $this->dbname);
+            $this->db = new PDO(
+                "mysql:host=$this->dbhost;dbname=$this->dbname",
+                $this->dbuser,
+                $this->dbpass,
+                [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+                ]
+            );
+
             return $this->db;
-        } catch (Exception $e) {
-            return $e->getMessage();
+        } catch (PDOException $e) {
+
+            throw $e;
         }
     }
 }

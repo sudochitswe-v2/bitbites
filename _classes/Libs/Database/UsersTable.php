@@ -46,8 +46,6 @@ class UsersTable
             ':email' => $email,
             ':password' => $password
         ]);
-        echo $password;
-        echo $email;
         $row = $statement->fetch();
 
         return $row ?? false;

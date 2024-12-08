@@ -31,7 +31,11 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="#">Sign Out</a></li>
+                    <li>
+                        <form action="_actions/users/logout.php" method="post">
+                            <button class="dropdown-item" type="submit">Sign Out</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         <?php else : ?>
@@ -62,7 +66,11 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="#">Sign Out</a></li>
+                    <li>
+                        <form action="_actions/users/logout.php" method="post">
+                            <button class="dropdown-item" type="submit">Sign Out</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         <?php else : ?>

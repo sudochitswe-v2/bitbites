@@ -7,7 +7,7 @@ use Bb\Blendingbites\Libs\Database\UsersTable;
 
 include('../../env_loader.php');
 
-$futureBlockMinutes = time() + 15; // next 3 minutes
+$futureBlockMinutes = time() + 180; // next 3 minutes
 
 $fail_attempts = $_SESSION['fail_attempts'] ?? 0;
 
@@ -26,9 +26,12 @@ if ($has_fail_attempts && $has_blocked && $_SESSION['blocked_at'] > time()) {
     $message = "please wait $minutes minutes and $seconds seconds";
 
     HTTP::redirect('/login.php', ['blocked' => $message]);
-} else {
+}
+
+if ($has_blocked && $_SESSION['blocked_at'] < time()) {
     unset($_SESSION['blocked_at']);
     $_SESSION['fail_attempts'] = 0;
+    $fail_attempts = 0;
 }
 
 $email = $_POST['email'];

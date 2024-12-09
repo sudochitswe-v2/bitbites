@@ -1,6 +1,6 @@
 <style>
     body {
-        background-color: #af9d9b;
+        background-color: #F5F5DC;
     }
 
     /* Standardize image size */
@@ -108,11 +108,11 @@
 
     .col-md-6 p {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
-        color: rgb(137, 43, 9);
+        color: #8B4513;
     }
 
     .col-md-6 a {
-        color: rgb(1, 29, 19);
+        color: #8B4513;
     }
 </style>
 
@@ -143,7 +143,7 @@
 
             <!-- Read More Button -->
             <a
-                href="about_us.html"
+                href="about-us.php"
                 class="btn btn-outline-primary mt-3">Read More...</a>
         </div>
     </div>

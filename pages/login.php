@@ -5,8 +5,8 @@
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/bootstrap/5.1.3/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap/5.1.3/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
     <style>
         .wrap {
             width: 100%;
@@ -48,7 +48,7 @@
 
             <input type="password" name="password" class="form-control mb-2" placeholder="Password" required>
 
-            <button type="submit" class="w-100 btn btn-lg btn-primary">
+            <button type="submit" class="w-100 btn btn-lg btn-primary text-black">
                 Login
             </button>
         </form>

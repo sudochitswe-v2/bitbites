@@ -1,6 +1,6 @@
 :root {
-    --primary: #65020a;
-    --secondary: #b6a9a9;
+    --primary: rgb(210, 201, 201);
+    --secondary: #000000;
 }
 
 
@@ -18,15 +18,15 @@
 }
 
 .btn-outline-primary {
-    color: white !important;
+  
     border: 1px solid black !important;
-    color: var(--primary) !important;
+    
     transition: background-color 0.3s ease, transform 0.2s ease !important;
 }
 
 .btn-outline-primary:hover {
-    background-color: var(--primary) !important;
-    color: var(--secondary) !important;
+    background-color: var(--secondary) !important;
+    color: var(--primary) !important;
     transform: scale(1.05) !important;
     cursor: pointer !important;
 }

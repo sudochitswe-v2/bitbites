@@ -1,6 +1,6 @@
 <style>
     body {
-        background-color: #F5F5DC;
+        background-color: rgb(210, 201, 201);
     }
 
     /* Standardize image size */
@@ -65,8 +65,8 @@
     }
 
     .btn-explore-more:hover {
-        background-color: rgb(104, 32, 32);
-        color: rgba(216, 200, 200, 0.815);
+        background-color: rgb(42, 21, 21);
+        color: rgba(240, 229, 229, 0.81);
         transform: scale(1.05);
         cursor: pointer;
     }
@@ -83,12 +83,12 @@
         padding: 10px 15px;
     }
 
-    .carousel-caption:hover {
+    /* .carousel-caption:hover {
         background-color: rgb(229, 221, 221);
         color: rgb(86, 6, 6);
         transform: scale(1.15);
         cursor: pointer;
-    }
+    } */
 
     .carousel-caption h5 {
         font-size: 1.5rem;
@@ -101,18 +101,18 @@
     }
 
     .col-md-6 h2 {
-        color: rgb(45, 30, 11);
+        color: rgb(9, 5, 1);
         font-family: sans-serif;
         font-size: 2.5rem;
     }
 
     .col-md-6 p {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
-        color: #8B4513;
+        color: rgb(9, 5, 1);
     }
 
     .col-md-6 a {
-        color: #8B4513;
+        color: rgb(9, 5, 1);
     }
 </style>
 

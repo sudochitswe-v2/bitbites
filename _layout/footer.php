@@ -67,7 +67,7 @@
     }
 
     .footer a:hover {
-        color: #65020a;
+        color: rgb(240, 191, 195);
     }
 
     .footer h5 {
@@ -90,7 +90,7 @@
     }
 
     .list-inline-item a:hover svg {
-        fill: #65020a;
+        fill: rgb(240, 191, 195);
         /* Primary color fill on hover */
     }
 </style>

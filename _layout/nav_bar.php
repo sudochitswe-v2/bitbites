@@ -39,7 +39,7 @@
                 </ul>
             </div>
         <?php else : ?>
-            <a href="login.php" class="btn btn-primary py-2 px-4 d-lg-none">Login</a>
+            <a href="pages/login.php" class="btn btn-primary py-2 px-4 d-lg-none text-black">Login</a>
         <?php endif ?>
 
     </div>
@@ -74,6 +74,6 @@
                 </ul>
             </div>
         <?php else : ?>
-            <a href="login.php" class="btn btn-primary py-2 px-4 d-none d-lg-block">Login</a>
+            <a href="pages/login.php" class="btn btn-primary py-2 px-4 d-none d-lg-block text-black">Login</a>
         <?php endif ?>
     </div>

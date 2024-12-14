@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<header>
+    <?php include '_layout/nav_bar.php'; ?>
+</header>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +17,7 @@
 
     <style>
         body {
-            background-color: #F5F5DC;
+            background-color: rgb(210, 201, 201);
         }
 
         .about-us-section {
@@ -63,7 +67,7 @@
 
         .img-fluid:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 16px rgba(45, 44, 44, 0.2);
         }
 
         /* Styling for the right column text */
@@ -145,10 +149,10 @@
 
         .social-links a:hover {
             color: #8b5e34;
-            /* Highlight color on hover */
+
         }
 
-        /* Hover Effects */
+
         .team-image-wrapper:hover img {
             transform: scale(1.1);
         }
@@ -157,18 +161,13 @@
             opacity: 1;
         }
 
-        /* Name Styling */
+
         .team-card p {
             font-weight: bold;
             margin-top: 1rem;
         }
     </style>
-
 </head>
-
-<header>
-    <?php include '_layout/nav_bar.php'; ?>
-</header>
 
 <body>
 
@@ -176,13 +175,14 @@
     <section class="about-us-section">
         <div class="about-us-overlay"></div>
         <div class="about-us-content">
-            <h1>Our Mission & Vision</h1>
+            <h1>Our Mission</h1>
             <p>
-                At FoodFusion, our mission is to bring people together by celebrating culinary creativity from around the globe.
-                We aim to blend diverse flavors, cultures, and experiences into a unique dining adventure.
+                "To empower home cooks to share their stories and connect with others through the universal language of food, by providing a platform that celebrates quality, inclusivity, and innovation in cooking."
             </p>
+            </br>
+            <h1>Our Vision</h1>
             <p>
-                Our vision is to become a global leader in food innovation, inspiring communities to embrace diversity through shared meals and unforgettable experiences.
+                "To become the go-to destination for home cooks to discover, share, and celebrate their favorite recipes, and to inspire a global community of cooks to come together and create a more delicious, diverse, and connected world."
             </p>
         </div>
     </section>
@@ -192,7 +192,10 @@
             <!-- Left Column: 3 Pictures -->
             <div class="col-md-6">
                 <div class="row g-3">
-                    <div class="col-12" data-aos="fade-up">
+                    <div class="col-6" data-aos="fade-up">
+                        <img src="images/cp3.jpg" alt="Culinary Philosophy 1" class="img-fluid rounded">
+                    </div>
+                    <div class="col-6" data-aos="fade-up">
                         <img src="images/cp3.jpg" alt="Culinary Philosophy 1" class="img-fluid rounded">
                     </div>
                     <div class="col-6" data-aos="fade-up" data-aos-delay="100">
@@ -208,15 +211,16 @@
             <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
                 <h2>Our Culinary Philosophy</h2>
                 <p>
-                    At FoodFusion, we believe in blending traditional techniques with modern creativity.
-                    Our approach celebrates cultural diversity and culinary innovation, creating dishes that
-                    connect people and spark joy.
-                </p>
+                    "At the heart of our culinary philosophy is a passion for creativity, quality, and community.
+                    We believe that food should be a celebration of life's simple pleasures, bringing people together and nourishing both body and soul.
+                    Our chefs are dedicated to crafting dishes that are not only delicious, but also visually stunning and thoughtfully sourced.
+                    We're committed to using only the freshest, locally-sourced ingredients and innovative techniques to create menus that are both familiar and excitingly new. Whether you're joining us for a casual meal or a special occasion, we're dedicated to providing an unforgettable culinary experience that leaves you feeling satisfied, inspired, and eager to return."</P>
                 <h4>Core Values</h4>
                 <ul class="values">
-                    <li><strong>Quality:</strong> Using the finest ingredients to craft exceptional dishes.</li>
-                    <li><strong>Inclusivity:</strong> Embracing diverse cuisines and cultures.</li>
-                    <li><strong>Innovation:</strong> Redefining culinary boundaries with bold ideas.</li>
+                    <p>"At FoodFusion, we're passionate about creating a community that celebrates the art of cooking. Our core values reflect our commitment to delivering a unique and exceptional experience for our users.</p>
+                    <li><strong>Quality:</strong> Quality is at the heart of everything we do, as we believe that the best recipes start with the freshest ingredients and a dash of love. </li>
+                    <li><strong>Inclusivity:</strong> Inclusivity is also a core value, as we welcome recipes from home cooks of all backgrounds and cuisines. Whether you're a seasoned chef or a culinary newbie, we believe that everyone has a story to tell through food.</li>
+                    <li><strong>Innovation:</strong> Innovation drives us to constantly push the boundaries of what's possible with food. We're always on the lookout for new techniques, ingredients, and inspiration to help our users take their cooking to the next level.</li>
                 </ul>
             </div>
         </div>

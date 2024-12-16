@@ -7,7 +7,8 @@
     use Bb\Blendingbites\Libs\Database\MySQL;
     use Bb\Blendingbites\Libs\Database\RecipesTable;
 
-    include '../_layout/nav_bar.php'; ?>
+    include '_nav.php';
+    ?>
 </header>
 
 <head>

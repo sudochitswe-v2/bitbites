@@ -1,7 +1,6 @@
 <?php session_start() ?>
-<link rel="stylesheet" href="css/template/nav.css">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py">
-    <a href="" class="navbar-brand p-0">
+    <a href="../index.php" class="navbar-brand p-0">
         <h1 class="bb-text-primary m-0">
             <i class="fa fa-utensils me-3"></i>
         </h1>
@@ -16,7 +15,7 @@
 
         <?php if ($isAuth): ?>
             <div class="dropdown d-lg-none">
-                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                <a href="" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                     id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="https://via.placeholder.com/40" alt="Avatar" class="rounded-circle me-2" width="40"
                         height="40">
@@ -36,14 +35,14 @@
                 </ul>
             </div>
         <?php else : ?>
-            <a href="pages/login.php" class="btn btn-primary py-2 px-4 d-lg-none text-black">Login</a>
+            <a href="login.php" class="btn btn-primary py-2 px-4 d-lg-none text-black">Login</a>
         <?php endif ?>
 
     </div>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0 pe-4">
-            <a href="pages/recipes.php" class="nav-item nav-link active">Recipe</a>
-            <a href="pages/about.php" class="nav-item nav-link">About</a>
+            <a href="recipes.php" class="nav-item nav-link">Recipe</a>
+            <a href="about.php" class="nav-item nav-link">About</a>
             <a href="#" class="nav-item nav-link">Community</a>
             <a href="#" class="nav-item nav-link">Contact Us</a>
             <a href="#" class="nav-item nav-link">Resources</a>
@@ -71,6 +70,6 @@
                 </ul>
             </div>
         <?php else : ?>
-            <a href="pages/login.php" class="btn btn-primary py-2 px-4 d-none d-lg-block text-black">Login</a>
+            <a href="login.php" class="btn btn-primary py-2 px-4 d-none d-lg-block text-black">Login</a>
         <?php endif ?>
     </div>

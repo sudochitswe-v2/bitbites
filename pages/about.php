@@ -2,17 +2,17 @@
 <html lang="en">
 
 <header>
-    <?php include '_layout/nav_bar.php'; ?>
+    <?php include '_nav.php'; ?>
 </header>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - FoodFusion</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap/5.1.3/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome/5.10.0/all.min.css">
-    <script src="js/boostrap/5.1.3/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap/5.1.3/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome/5.10.0/all.min.css">
+    <script src="../js/bootstrap/5.1.3/bootstrap.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
     <style>
@@ -23,7 +23,7 @@
         .about-us-section {
             position: relative;
             height: 100vh;
-            background: url('images/desert.jpg') no-repeat center center/cover;
+            background: url('../images/desert.jpg') no-repeat center center/cover;
             color: white;
             display: flex;
             justify-content: center;
@@ -193,16 +193,16 @@
             <div class="col-md-6">
                 <div class="row g-3">
                     <div class="col-6" data-aos="fade-up">
-                        <img src="images/cp3.jpg" alt="Culinary Philosophy 1" class="img-fluid rounded">
+                        <img src="../images/cp3.jpg" alt="Culinary Philosophy 1" class="img-fluid rounded">
                     </div>
                     <div class="col-6" data-aos="fade-up">
-                        <img src="images/cp3.jpg" alt="Culinary Philosophy 1" class="img-fluid rounded">
+                        <img src="../images/cp3.jpg" alt="Culinary Philosophy 1" class="img-fluid rounded">
                     </div>
                     <div class="col-6" data-aos="fade-up" data-aos-delay="100">
-                        <img src="images/cp2.jpg" alt="Culinary Philosophy 2" class="img-fluid rounded">
+                        <img src="../images/cp2.jpg" alt="Culinary Philosophy 2" class="img-fluid rounded">
                     </div>
                     <div class="col-6" data-aos="fade-up" data-aos-delay="200">
-                        <img src="images/cp1.jpg" alt="Culinary Philosophy 3" class="img-fluid rounded">
+                        <img src="../images/cp1.jpg" alt="Culinary Philosophy 3" class="img-fluid rounded">
                     </div>
                 </div>
             </div>
@@ -307,7 +307,7 @@
         });
     </script>
 
-    <?php include '_layout/footer.php' ?>
+    <?php include '../_layout/footer.php' ?>
 
 </body>
 

@@ -43,6 +43,7 @@ class RecipesTable
             LEFT JOIN difficulties d ON r.difficulty_id = d.id
             LEFT JOIN cuisines c ON r.cuisine_id = c.id
             LEFT JOIN favouriates f ON r.id = f.recipe_id
+            ORDER BY r.id DESC;
         ";
 
         $statement = $this->db->query($sql);
@@ -110,22 +111,15 @@ class RecipesTable
     }
     public function update($data)
     {
-        $updateQuery = "UPDATE recipes SET name = :name, short_description = :short_description, 
+        $updateQuery = "UPDATE recipes SET name = :name,difficulty_id = :difficulty_id ,cuisine_id = :cuisine_id, short_description = :short_description, 
         image = :image, description = :description WHERE id = :id";
         $updateStmt = $this->db->prepare($updateQuery);
-        $updateStmt->execute([
-            ':name' => $data['name'],
-            ':short_description' => $data['short_description'],
-            ':image' => $data['image'],
-            ':description' => $data['description'],
-            ':id' => $data['id']
-        ]);
+        $updateStmt->execute($data);
     }
 
     public function insert($data)
     {
-        var_dump($data);
-        $insertQuery = "INSERT INTO recipes (name, difficulty_id, cuisine_id,short_description, image, description) VALUES (:name, :short_description,:difficulty_id, :cuisine_id,, :image, :description)";
+        $insertQuery = "INSERT INTO recipes (name, difficulty_id, cuisine_id,short_description, image, description) VALUES (:name,:difficulty_id, :cuisine_id, :short_description,:image, :description)";
         $insertStmt = $this->db->prepare($insertQuery);
         return $insertStmt->execute($data);
     }

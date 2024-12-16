@@ -4,7 +4,7 @@ namespace Bb\Blendingbites\Helpers;
 
 class Auth
 {
-    
+
     static function check()
     {
         session_start();
@@ -15,6 +15,12 @@ class Auth
     static function needLogin()
     {
         if (!self::check()) {
+            HTTP::redirect("/login.php");
+        }
+    }
+    static function checkIfAdmin()
+    {
+        if (self::check()) {
             HTTP::redirect("/login.php");
         }
     }

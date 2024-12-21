@@ -25,7 +25,7 @@ if ($has_fail_attempts && $has_blocked && $_SESSION['blocked_at'] > time()) {
 
     $message = "please wait $minutes minutes and $seconds seconds";
 
-    HTTP::redirect('/login.php', ['blocked' => $message]);
+    HTTP::redirect('/pages/login.php', ['blocked' => $message]);
 }
 
 if ($has_blocked && $_SESSION['blocked_at'] < time()) {
@@ -39,7 +39,7 @@ $password = md5($_POST['password']);
 
 $table = new UsersTable(new MySQL());
 
-$user = $table->findByEmailAndPassword($email, $password);
+$user = $table->findByEmailAndPassword($email, $password,);
 
 if ($user) {
     $_SESSION['user'] = $user;
@@ -51,5 +51,5 @@ if ($user) {
     if ($fail_attempts >= 3) {
         $_SESSION['blocked_at'] = $_SESSION['blocked_at'] ?? $futureBlockMinutes;
     }
-    HTTP::redirect("/login.php", ["incorrect" => $fail_attempts]);
+    HTTP::redirect("/pages/login.php", ["incorrect" =>  "$fail_attempts  $password"]);
 }

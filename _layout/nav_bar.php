@@ -18,7 +18,7 @@
             <div class="dropdown d-lg-none">
                 <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                     id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://via.placeholder.com/40" alt="Avatar" class="rounded-circle me-2" width="40"
+                    <img src="<?= $_ENV['BASE_PATH'] . '/' . $user->profile ?>" alt="Avatar" class="rounded-circle me-2" width="40"
                         height="40">
                     <span><?= $user->name ?></span>
                 </a>
@@ -53,7 +53,7 @@
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                     id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://via.placeholder.com/40" alt="Avatar" class="rounded-circle me-2" width="40"
+                    <img src="<?= $_ENV['BASE_PATH'] . '/' . $user->profile ?>" alt="Avatar" class="rounded-circle me-2" width="40"
                         height="40">
                     <span><?= $user->name ?></span>
                 </a>

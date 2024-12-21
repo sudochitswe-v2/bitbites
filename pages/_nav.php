@@ -1,4 +1,5 @@
 <?php session_start() ?>
+<link rel="stylesheet" href="../css/template/nav.css">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py">
     <a href="../index.php" class="navbar-brand p-0">
         <h1 class="bb-text-primary m-0">
@@ -45,7 +46,19 @@
             <a href="about.php" class="nav-item nav-link">About</a>
             <a href="#" class="nav-item nav-link">Community</a>
             <a href="#" class="nav-item nav-link">Contact Us</a>
-            <a href="#" class="nav-item nav-link">Resources</a>
+            <!-- <a href="#" class="nav-item nav-link">Resources</a> -->
+            <div class="dropdown"><a href="#"
+                    id="navbarDropDown"
+                    class="nav-link dropdown-toggle"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">Resources
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <a href="#" class="dropdown-item">Culinary Resources</a>
+                    <a href="#" class="dropdown-item">Educational Resources</a>
+                </div>
+            </div>
         </div>
 
         <?php if ($isAuth): ?>

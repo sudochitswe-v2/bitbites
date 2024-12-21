@@ -1,18 +1,26 @@
 <?php
 
 use Bb\Blendingbites\Helpers\HTTP;
+use Bb\Blendingbites\Helpers\ImageHandler;
 use Bb\Blendingbites\Libs\Database\MySQL;
 use Bb\Blendingbites\Libs\Database\UsersTable;
 
 include('../../env_loader.php');
 
 try {
-    // prepre data from super global variable $POST
+    $image = null;
+    if (isset($_FILES["image"]) && $_FILES["image"]["size"] != 0) {
+        $image = ImageHandler::upload($_FILES);
+    }
+
+    // prepare data from super global variable $POST
     $data =  [
-        "name" => $_POST['name'] ?? 'Unknown',
+        "first_name" => $_POST['first_name'],
+        "last_name" => $_POST['last_name'],
+        "name" => $_POST['first_name'] .' '. $_POST['last_name'],
+        "profile" => $image,
+        "phone" => $_POST['phone'],
         "email" => $_POST['email'] ?? 'Unknown',
-        "phone" => $_POST['phone'] ?? 'Unknown',
-        "address" => $_POST['address'] ?? 'Unknown',
         "password" => md5($_POST['password']),
         "role_id" => 1,
     ];
@@ -23,8 +31,8 @@ try {
     // insert register data
     $table->insert($data);
 
-    HTTP::redirect('/login.php', ["registered" => true]);
+    HTTP::redirect('/pages/login.php', ["registered" => true]);
 } catch (Exception $e) {
 
-    HTTP::redirect('/register.php', ["error" => $e->getMessage()]);
+    HTTP::redirect('/pages/register.php', ["error" => $e->getMessage()]);
 }

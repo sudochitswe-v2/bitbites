@@ -43,7 +43,7 @@
             </div>
         <?php endif ?>
 
-        <form action="_actions/users/login.php" method="post">
+        <form action="../_actions/users/login.php" method="post">
             <input type="email" name="email" class="form-control mb-2" placeholder="Email" required>
 
             <input type="password" name="password" class="form-control mb-2" placeholder="Password" required>

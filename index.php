@@ -11,7 +11,7 @@
     <script src="js/bootstrap/5.1.3/bootstrap.min.js"></script>
 
 </head>
-
+<?php include 'env_loader.php'; ?>
 <header>
     <?php include '_layout/nav_bar.php'; ?>
 </header>

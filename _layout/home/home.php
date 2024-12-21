@@ -143,7 +143,7 @@
 
             <!-- Read More Button -->
             <a
-                href="about-us.php"
+                href="pages/about.php"
                 class="btn btn-outline-primary mt-3">Read More...</a>
         </div>
     </div>
@@ -198,7 +198,7 @@
                 </div>
                 <div class="col-6">
                     <div class="recipe-card">
-                        <img class="sm-img" src="images/ft3.jpg" Tex-Mex Loaded Nachos"
+                        <img class="sm-img" src="images/ft3.jpg"
                             class="img-fluid rounded">
                         <div class="description">
                             <p>Crunchy nachos loaded with cheese and toppings.</p>

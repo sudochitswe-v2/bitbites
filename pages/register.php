@@ -1,3 +1,45 @@
+<?php
+include '../env_loader.php';
+
+use Bb\Blendingbites\Helpers\HTTP;
+use Bb\Blendingbites\Helpers\ImageHandler;
+use Bb\Blendingbites\Libs\Database\MySQL;
+use Bb\Blendingbites\Libs\Database\UsersTable;
+
+
+try {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $image = null;
+        if (isset($_FILES["image"]) && $_FILES["image"]["size"] != 0) {
+            $image = ImageHandler::upload($_FILES);
+        }
+
+        // prepare data from super global variable $POST
+        $data =  [
+            "first_name" => $_POST['first_name'],
+            "last_name" => $_POST['last_name'],
+            "name" => $_POST['first_name'] . ' ' . $_POST['last_name'],
+            "profile" => $image,
+            "phone" => $_POST['phone'],
+            "email" => $_POST['email'] ?? 'Unknown',
+            "password" => md5($_POST['password']),
+            "role_id" => 1,
+        ];
+
+        // create connection to users table
+        $table = new UsersTable(new MySQL());
+
+        // insert register data
+        $table->insert($data);
+
+        HTTP::redirect('/pages/login.php', ["registered" => true]);
+    }
+} catch (Throwable $e) {
+
+    $_GET['error'] = $e->getMessage();
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -21,7 +63,7 @@
             </div>
         <?php endif ?>
 
-        <form action="../_actions/users/register.php" method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
             <div class="image-preview-container">
                 <label for="image" class="image-preview" id="imagePreview">
                     <span>Click to Uplode Photo</span>
@@ -50,4 +92,5 @@
         <a href="../index.php">Back To Home</a>
     </div>
 </body>
+
 </html>

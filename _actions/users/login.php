@@ -51,5 +51,5 @@ if ($user) {
     if ($fail_attempts >= 3) {
         $_SESSION['blocked_at'] = $_SESSION['blocked_at'] ?? $futureBlockMinutes;
     }
-    HTTP::redirect("/pages/login.php", ["incorrect" =>  "$fail_attempts  $password"]);
+    HTTP::redirect("/pages/login.php", ["incorrect" =>  "$fail_attempts"]);
 }

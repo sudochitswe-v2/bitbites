@@ -16,15 +16,14 @@
 
         <?php if ($isAuth): ?>
             <div class="dropdown d-lg-none">
-                <a href="" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                     id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://via.placeholder.com/40" alt="Avatar" class="rounded-circle me-2" width="40"
+                    <img src="<?= $_ENV['BASE_PATH'] . '/' . $user->profile ?>" alt="Avatar" class="rounded-circle me-2" width="40"
                         height="40">
                     <span><?= $user->name ?></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
@@ -61,16 +60,15 @@
         </div>
 
         <?php if ($isAuth): ?>
-            <div class="dropdown">
+            <div class="dropdown d-none d-lg-block">
                 <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                     id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://via.placeholder.com/40" alt="Avatar" class="rounded-circle me-2" width="40"
+                    <img src="<?= $_ENV['BASE_PATH'] . '/' . $user->profile ?>" alt="Avatar" class="rounded-circle me-2" width="40"
                         height="40">
                     <span><?= $user->name ?></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
@@ -82,6 +80,6 @@
                 </ul>
             </div>
         <?php else : ?>
-            <a href="login.php" class="btn btn-primary py-2 px-4 d-none d-lg-block text-black">Login</a>
+            <a href="pages/login.php" class="btn btn-primary py-2 px-4 d-none d-lg-block text-black">Login</a>
         <?php endif ?>
     </div>

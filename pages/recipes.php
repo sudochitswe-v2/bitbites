@@ -3,11 +3,14 @@
 
 <header>
     <?php
+    include '../env_loader.php';
 
     use Bb\Blendingbites\Libs\Database\MySQL;
     use Bb\Blendingbites\Libs\Database\RecipesTable;
 
     include '_nav.php';
+    $recipesTable = new RecipesTable(new MySQL());
+    $recipes = $recipesTable->getAll();
     ?>
 </header>
 
@@ -18,7 +21,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/bootstrap/5.1.3/bootstrap.min.css">
     <link rel="stylesheet" href="../css/font-awesome/5.10.0/all.min.css">
-    <script src="../js/boostrap/5.1.3/bootstrap.min.js"></script>
+    <script src="../js/bootstrap/5.1.3/bootstrap.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
 </head>
@@ -45,12 +48,7 @@
     }
 </style>
 <?php
-include '../env_loader.php';
 
-use Bb\Blendingbites\Libs\Database;
-
-$recipesTable = new RecipesTable(new MySQL());
-$recipes = $recipesTable->getAll();
 ?>
 
 <body>
@@ -140,10 +138,6 @@ $recipes = $recipesTable->getAll();
     </section>
     <?php include '../_layout/footer.php' ?>
 </body>
-
-<!-- Bootstrap Bundle JS and Bootstrap Icons -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<!-- JavaScript for Like Counter -->
 <script>
     function increaseLikes(heart) {
         let likeCount = heart.nextElementSibling;

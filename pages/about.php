@@ -2,7 +2,11 @@
 <html lang="en">
 
 <header>
-    <?php include '_nav.php'; ?>
+
+    <?php
+    require_once '../env_loader.php';
+    include '_nav.php'
+    ?>
 </header>
 
 <head>

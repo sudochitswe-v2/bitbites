@@ -24,7 +24,6 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
@@ -61,7 +60,7 @@
         </div>
 
         <?php if ($isAuth): ?>
-            <div class="dropdown">
+            <div class="dropdown d-none d-lg-block">
                 <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                     id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="<?= $_ENV['BASE_PATH'] . '/' . $user->profile ?>" alt="Avatar" class="rounded-circle me-2" width="40"
@@ -70,7 +69,6 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>

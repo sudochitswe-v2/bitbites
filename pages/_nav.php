@@ -46,7 +46,6 @@
             <a href="about.php" class="nav-item nav-link">About</a>
             <a href="#" class="nav-item nav-link">Community</a>
             <a href="#" class="nav-item nav-link">Contact Us</a>
-            <!-- <a href="#" class="nav-item nav-link">Resources</a> -->
             <div class="dropdown"><a href="#"
                     id="navbarDropDown"
                     class="nav-link dropdown-toggle"

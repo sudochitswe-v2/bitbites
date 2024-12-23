@@ -7,36 +7,8 @@
 
     <link rel="stylesheet" href="../css/bootstrap/5.1.3/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        .wrap {
-            width: 100%;
-            max-width: 400px;
-            margin: 40px auto;
-        }
-
-        .image-preview-container {
-            position: relative;
-            height: 100px;
-        }
-
-        .image-preview {
-            width: 100px;
-            height: 100px;
-            border: 2px dashed black;
-            display: fkex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            background-size: cover;
-            background-position: center;
-            background-color: white;
-        }
-
-        .image-preview span {
-            color: #888;
-
-        }
-    </style>
+    <link rel="stylesheet" href="register.php.css">
+    <script src="../js/helper/image-preview.js"></script>
 </head>
 
 <body class="text-center">
@@ -78,26 +50,4 @@
         <a href="../index.php">Back To Home</a>
     </div>
 </body>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const imageInput = document.getElementById('image');
-        const preview = document.getElementById('imagePreview');
-
-        if (imageInput) {
-            imageInput.addEventListener('change', function(event) {
-                const file = event.target.files[0];
-
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        preview.style.backgroundImage = `url(${e.target.result})`;
-                        preview.innerHTML = ''; // Remove the placeholder text
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-        }
-    });
-</script>
-
 </html>

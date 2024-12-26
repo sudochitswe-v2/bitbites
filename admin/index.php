@@ -20,6 +20,7 @@
                 <a href="index.php" class="nav-link fw-semibold">Dashboard</a>
                 <a href="cuisines/" class="nav-link fw-semibold">Cuisines</a>
                 <a href="recipes/" class="nav-link fw-semibold">Recipes</a>
+                <a href="dietary-preferences/" class="nav-link fw-semibold">Dietary Preferences</a>
                 <a href="../" class="nav-link">
                     <i class="fa fa-arrow-left"></i> Back to website
                 </a>

@@ -5,7 +5,7 @@ use Bb\Blendingbites\Helpers\HTTP;
 use Bb\Blendingbites\Libs\Database\MySQL;
 use Bb\Blendingbites\Libs\Database\DietaryPreferencesTable;
 
-if ($server['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $data = [
         'name' => $name,

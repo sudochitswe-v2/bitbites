@@ -7,8 +7,10 @@ use Bb\Blendingbites\Libs\Database\DietaryPreferencesTable;
 
 $id = $_GET['id'];
 $DietaryPreferencesTable = new DietaryPreferencesTable(new MySQL());
-$DietaryPreferencesTable = $DietaryPreferencesTable->getById($id);
+$DietaryPreferences = $DietaryPreferencesTable->getById($id);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     $id = $_POST['id'];
     $name = $_POST['name'];
     $data = [

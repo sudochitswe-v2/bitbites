@@ -9,10 +9,10 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
     try {
         $DietaryPreferencesTable = new DietaryPreferencesTable(new MySQL());
-        $DietaryPreferencesTable->delete($id);
-        HTTP::redirect('/admin/ditery-preference/');
+        $DietaryPreferences->delete($id);
+        HTTP::redirect('/admin/ditery-preferences/');
         exit();
     } catch (Throwable $e) {
-        HTTP::redirect('/admin/dietary-preference/', ['error' => $e->getMessage()]);
+        HTTP::redirect('/admin/dietary-preferences/', ['error' => $e->getMessage()]);
     }
 }

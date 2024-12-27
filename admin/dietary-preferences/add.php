@@ -3,28 +3,20 @@ require_once '../../env_loader.php';
 
 use Bb\Blendingbites\Helpers\HTTP;
 use Bb\Blendingbites\Libs\Database\MySQL;
-use Bb\Blendingbites\Libs\Database\CuisinesTable;
+use Bb\Blendingbites\Libs\Database\DietaryPreferencesTable;
 
-$id = $_GET['id'];
-$cuisinesTable  = new CuisinesTable(new MySQL());
-$cuisine = $cuisinesTable->getById($id);
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    $id = $_POST['id'];
+if ($server['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
-
-    $data =  [
-        'id' => $id,
+    $data = [
         'name' => $name,
     ];
 
     try {
-        $cuisinesTable->update($data);
-        HTTP::redirect('/admin/cuisines');
-        exit();
-    } catch (Throwable $e) {
-        $_GET['error'] = $e->getMessage();
+        $DietaryPreferencesTable = new DietaryPreferencesTable(new MySQL());
+        $DietaryPreferencesTable->insert($data);
+        HTTP::redirect('/admin/dietary-preferences');
+    } catch (\Throwable $th) {
+        $_GET['error'] = $th->getMessage();
     }
 }
 ?>
@@ -34,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuisines</title>
+    <title>Dietary Preferences</title>
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/bootstrap/5.1.3/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/font-awesome/5.10.0/all.min.css">

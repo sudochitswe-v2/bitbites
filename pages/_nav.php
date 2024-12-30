@@ -44,7 +44,7 @@
             <a href="recipes.php" class="nav-item nav-link">Recipe</a>
             <a href="about.php" class="nav-item nav-link">About</a>
             <a href="#" class="nav-item nav-link">Community</a>
-            <a href="#" class="nav-item nav-link">Contact Us</a>
+            <a href="contact.php" class="nav-item nav-link">Contact Us</a>
             <div class="dropdown"><a href="#"
                     id="navbarDropDown"
                     class="nav-link dropdown-toggle"

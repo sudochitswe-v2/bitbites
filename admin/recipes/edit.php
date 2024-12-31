@@ -19,6 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = $_POST['description'];
     $cuisine = $_POST['cuisine'];
     $difficulty = $_POST['difficulty'];
+    $ingredients = $_POST['ingredients_description'];
+
 
     $data =  [
         'id' => $id,
@@ -28,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'difficulty_id' => (int) $difficulty,
         'image' => $oldImage,
         'cuisine_id' => (int) $cuisine,
+        'ingredients_description' => $ingredients,
     ];
     print_r($_FILES);
     if ($_FILES['image']['size'] != 0) {

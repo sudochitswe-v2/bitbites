@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = $_POST['description'];
     $cuisine = $_POST['cuisine'];
     $difficulty = $_POST['difficulty'];
+    $ingredients = $_POST['ingredients_description'];
 
 
     $data =  [
@@ -25,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'image' => $imagePath,
         'difficulty_id' => (int) $difficulty,
         'cuisine_id' => (int) $cuisine,
+        'ingredients_description' => $ingredients,
     ];
 
     try {

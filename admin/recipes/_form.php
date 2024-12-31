@@ -20,6 +20,14 @@ $cuisines = $cuisinesTable->getAll();
     <title><?= isset($recipe) ? 'Edit Recipe' : 'Add Recipe' ?></title>
     <link rel="stylesheet" href="../../css/bootstrap/5.1.3/bootstrap.min.css">
     <script src="../../js/helper/image-preview.js"></script>
+    <script src="https://cdn.tiny.cloud/1/drmgz8wp6e6ll3e4f504h121zztu7gvvltimxaw5y4thr62r/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea#ingredients_description',
+            plugins: 'lists',
+            toolbar: 'numlist bullist'
+        });
+    </script>
 </head>
 <style>
     .image-preview-container {
@@ -116,6 +124,12 @@ $cuisines = $cuisinesTable->getAll();
             <div class="mb-1">
                 <label for="description" class="form-label">Description</label>
                 <textarea class="form-control" id="description" name="description" rows="5" required><?= $recipe['description'] ?? '' ?></textarea>
+            </div>
+            <div class="mb-1">
+                <label for="description" class="form-label">Ingredients</label>
+                <textarea class="form-control" id="ingredients_description" name="ingredients_description" rows="5" required>
+                <?= $recipe['ingredients_description'] ?? '' ?>
+                </textarea>
             </div>
 
             <div>

@@ -119,7 +119,7 @@ class RecipesTable
 
     public function insert($data)
     {
-        $insertQuery = "INSERT INTO recipes (name, difficulty_id, cuisine_id,short_description, image, description) VALUES (:name,:difficulty_id, :cuisine_id, :short_description,:image, :description)";
+        $insertQuery = "INSERT INTO recipes (name, difficulty_id, cuisine_id,short_description, image, description,ingredients_description) VALUES (:name,:difficulty_id, :cuisine_id, :short_description,:image, :description,:ingredients_description)";
         $insertStmt = $this->db->prepare($insertQuery);
         return $insertStmt->execute($data);
     }

@@ -46,7 +46,6 @@ try {
 <head>
     <title>Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="../css/bootstrap/5.1.3/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="register.php.css">
@@ -75,6 +74,8 @@ try {
             <input type="text" name="first_name" class="form-control mb-2" placeholder="First Name" required>
 
             <input type="text" name="last_name" class="form-control mb-2" placeholder="Last Name" required>
+
+            <input type="date" name="date_of_birth" class="form-control mb-2" placeholder="Date of Birth" required>
 
             <input type="text" name="phone" class="form-control mb-2" placeholder="Phone Number" required>
 

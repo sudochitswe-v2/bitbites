@@ -111,7 +111,9 @@
                 <?php foreach ($recipes as $recipe): ?>
                     <div class="col-md-6">
                         <div class="card h-100">
-                            <img src="<?= htmlspecialchars($recipe['image']) ?>" class="card-img-top" alt="Recipe Photo 1">
+                            <a href="recipe-detail.php?id=<?= $recipe['id'] ?>">
+                                <img src="<?= $_ENV['BASE_PATH'] . '/' . htmlspecialchars($recipe['image']) ?>" class="card-img-top" alt="Recipe Photo">
+                            </a>
                             <div class="card-body d-flex flex-column justify-content-between">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="fw-bold"><?= htmlspecialchars($recipe['name']) ?></span>

@@ -3,6 +3,7 @@
 namespace Bb\Blendingbites\Libs\Database;
 
 use Bb\Blendingbites\Libs\Database\MySQL;
+use PDO;
 
 class DifficultiesTable
 {
@@ -19,5 +20,12 @@ class DifficultiesTable
         $statement = $this->db->query($sql);
         $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
         return $results;
+    }
+    public function getById($id)
+    {
+        $selectQuery= "SELECT * FROM Difficulties where id=:id";
+        $selectStmt=$this->db->prepare($selectQuery);
+        $selectStmt->execute(['id'=>$id]);
+        return $selectStmt->fetch(\PDO::FETCH_ASSOC);
     }
 }

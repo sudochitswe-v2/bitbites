@@ -1,4 +1,18 @@
 <?php session_start() ?>
+
+<?php
+$isAuth = isset($_SESSION['user']);
+$user = $isAuth ? $_SESSION['user'] : null;
+?>
+
+<?php if ($isAuth && $user->value == 2): ?>
+    <div class="d-flex justify-content-center text-black">
+        <a href="admin/" class=" text-black text-decoration-none text-decoration-underline">
+            <h4>Go to Admin Panel</h4>
+        </a>
+    </div>
+<?php endif ?>
+
 <link rel="stylesheet" href="css/template/nav.css">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py">
     <a href="" class="navbar-brand p-0">
@@ -9,10 +23,6 @@
     <div class="d-flex align-items-center">
         <i class="fa fa-bars navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"></i>
 
-        <?php
-        $isAuth = isset($_SESSION['user']);
-        $user = $isAuth ? $_SESSION['user'] : null;
-        ?>
 
         <?php if ($isAuth): ?>
             <div class="dropdown d-lg-none">

@@ -83,12 +83,6 @@
         padding: 10px 15px;
     }
 
-    /* .carousel-caption:hover {
-        background-color: rgb(229, 221, 221);
-        color: rgb(86, 6, 6);
-        transform: scale(1.15);
-        cursor: pointer;
-    } */
 
     .carousel-caption h5 {
         font-size: 1.5rem;

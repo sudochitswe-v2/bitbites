@@ -22,9 +22,9 @@ class UsersTable
     {
         // create query statement with sql paramters
         $query = " INSERT INTO  users 
-            (first_name, last_name, name, profile, phone, email, password, role_id) 
+            (first_name, last_name, name, profile, date_of_birth, phone, email, password, role_id) 
             VALUES 
-            (:first_name, :last_name,:name, :profile,:phone, :email, :password, :role_id);";
+            (:first_name, :last_name,:name, :profile, :date_of_birth, :phone, :email, :password, :role_id);";
 
         // bind sql parameters
         $statement = $this->db->prepare($query);

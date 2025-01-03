@@ -107,19 +107,26 @@ class RecipesTable
         $stmt = $this->db->prepare($query);
         $stmt->execute([':id' => $id]);
         $recipe = $stmt->fetch(PDO::FETCH_ASSOC);
+        $cuisineTable= new CuisinesTable(new MySQL());
+        $difficultiesTable=new DifficultiesTable(new MySQL());
+        $cuisine=$cuisineTable->getById($recipe['cuisine_id']);
+        $difficulty=$difficultiesTable->getById($recipe['difficulty_id']);
+        $recipe['difficulty']=$difficulty;
+        $recipe['cuisine']=$cuisine;
         return $recipe;
     }
     public function update($data)
     {
         $updateQuery = "UPDATE recipes SET name = :name,difficulty_id = :difficulty_id ,cuisine_id = :cuisine_id, short_description = :short_description, 
-        image = :image, description = :description WHERE id = :id";
+        image = :image, description = :description, ingredients_description=:ingredients_description WHERE id = :id";
         $updateStmt = $this->db->prepare($updateQuery);
         $updateStmt->execute($data);
     }
 
     public function insert($data)
     {
-        $insertQuery = "INSERT INTO recipes (name, difficulty_id, cuisine_id,short_description, image, description,ingredients_description) VALUES (:name,:difficulty_id, :cuisine_id, :short_description,:image, :description,:ingredients_description)";
+        $insertQuery = "INSERT INTO recipes (name, difficulty_id, cuisine_id,short_description, image, description,ingredients_description) 
+        VALUES (:name,:difficulty_id, :cuisine_id, :short_description,:image, :description,:ingredients_description)";
         $insertStmt = $this->db->prepare($insertQuery);
         return $insertStmt->execute($data);
     }

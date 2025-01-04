@@ -10,14 +10,14 @@ class ImageHandler
     {
         $dir = str_replace("_classes\Helpers", "", __DIR__);
 
-        $writeDir = $dir . 'images/uploads/';
+        $writeDir = $dir . 'public/images/uploads/';
         if (!is_dir($writeDir)) {
             mkdir($writeDir, 0755, true);
         }
 
         $image = $file['image']['name'];
         $writePath = $writeDir . basename($image);
-        $readPath = 'images/uploads/' . basename($image);
+        $readPath = 'public/images/uploads/' . basename($image);
 
         // Move uploaded file
         if (move_uploaded_file($file['image']['tmp_name'], $writePath)) {

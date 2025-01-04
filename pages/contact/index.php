@@ -3,7 +3,7 @@
 use Bb\Blendingbites\Libs\Database\ContactsTable;
 use Bb\Blendingbites\Libs\Database\MySQL;
 
-require_once '../env_loader.php';
+require_once '../../env_loader.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = [
         'first_name' => $_POST['first_name'],
@@ -25,21 +25,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!DOCTYPE html>
 <html lang="en">
 <header>
-    <?php
-    include '_nav.php'
-    ?>
+    <?php include '../../_layout/nav_bar.php' ?>
 </header>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/bootstrap/5.1.3/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/font-awesome/5.10.0/all.min.css">
+    <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/css/font-awesome/5.10.0/all.min.css">
     <script src="../js/bootstrap/5.1.3/bootstrap.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
     <style>
         body {
             background-color: rgb(210, 201, 201);
@@ -173,7 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
 
     </section>
-    <?php include '../_layout/footer.php' ?>
+    <?php include '../../_layout/footer.php' ?>
 </body>
 
 </html>

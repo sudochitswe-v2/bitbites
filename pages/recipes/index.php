@@ -3,14 +3,15 @@
 
 <header>
     <?php
-    include '../env_loader.php';
+    include '../../env_loader.php';
 
+    use Bb\Blendingbites\Helpers\HTTP;
     use Bb\Blendingbites\Libs\Database\MySQL;
     use Bb\Blendingbites\Libs\Database\RecipesTable;
 
-    include '_nav.php';
     $recipesTable = new RecipesTable(new MySQL());
     $recipes = $recipesTable->getAll();
+    include '../../_layout/nav_bar.php';
     ?>
 </header>
 
@@ -18,11 +19,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe_Collection</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/bootstrap/5.1.3/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/font-awesome/5.10.0/all.min.css">
-    <script src="../js/bootstrap/5.1.3/bootstrap.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/css/font-awesome/5.10.0/all.min.css">
+    <script src="../../public/js/bootstrap/5.1.3/bootstrap.min.js"></script>
+    <script src="../../public/js/bootstrap/5.1.3/bootstrap.bundle.min.js"></script>
 
 </head>
 <style>
@@ -111,14 +112,14 @@
                 <?php foreach ($recipes as $recipe): ?>
                     <div class="col-md-6">
                         <div class="card h-100">
-                            <a href="recipe-detail.php?id=<?= $recipe['id'] ?>">
+                            <a href="<?= HTTP::url('/pages/recipes/detail.php') ?>?id=<?= $recipe['id'] ?>">
                                 <img src="<?= $_ENV['BASE_PATH'] . '/' . htmlspecialchars($recipe['image']) ?>" class="card-img-top" alt="Recipe Photo">
                             </a>
                             <div class="card-body d-flex flex-column justify-content-between">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="fw-bold"><?= htmlspecialchars($recipe['name']) ?></span>
                                     <div class="d-flex align-items-center">
-                                        <i class="bi bi-heart text-danger me-1 heart-icon" onclick="increaseLikes(this)"></i>
+                                        <i class="far fa-heart text-danger me-1 heart-icon" onclick="increaseLikes(this)"></i>
                                         <span class="like-count"><?= htmlspecialchars(count($recipe['liked_user_ids'])) ?></span>
                                     </div>
                                     <span class="text-muted"><?= htmlspecialchars($recipe['difficulty']['name']) ?></span>
@@ -138,7 +139,7 @@
             </div>
         </div>
     </section>
-    <?php include '../_layout/footer.php' ?>
+    <?php include '../../_layout/footer.php' ?>
 </body>
 <script>
     function increaseLikes(heart) {

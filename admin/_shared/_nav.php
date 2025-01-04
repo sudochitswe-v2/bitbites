@@ -1,18 +1,16 @@
 <?php
-function navigationBuilder($routes)
-{
 
-    echo '<div class="vh-100 p-3" style="width: 250px; background-color: #F1F1F1">';
-    echo '<h4 class="text-center mb-4">Admin Panel</h4>';
-    echo '<nav class="nav flex-column">';
-    foreach ($routes as $route) {
-        echo '<a href="' . $route['url'] . '" class="nav-link fw-semibold">';
-        if (isset($route['icon']) && $route['icon'] !== null) {
-            echo '<i class="' . $route['icon'] . '"></i>';
-        }
-        echo $route['name'];
-        echo '</a>';
-    }
-    echo '</nav>';
-    echo '</div>';
-}
+use Bb\Blendingbites\Helpers\HTTP;
+?>
+<div class="vh-100 p-3" style="width: 250px; background-color: #F1F1F1">
+    <h4 class="text-center mb-4">Admin Panel</h4>
+    <nav class="nav flex-column">
+        <a href="<?= HTTP::url('/admin') ?>" class="nav-link fw-semibold">Dashboard</a>
+        <a href="<?= HTTP::url('/admin/cuisines') ?>" class="nav-link fw-semibold">Cuisines</a>
+        <a href="<?= HTTP::url('/admin/recipes') ?>" class="nav-link fw-semibold">Recipes</a>
+        <a href="<?= HTTP::url('/admin/dietary-preferences') ?>" class="nav-link fw-semibold">Dietary Preferences</a>
+        <a href="<?= HTTP::url('/') ?>" class="nav-link">
+            <i class="fa fa-arrow-left"></i> Back to website
+        </a>
+    </nav>
+</div>

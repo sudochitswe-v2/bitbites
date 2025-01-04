@@ -1,5 +1,5 @@
 <?php
-include '../env_loader.php';
+include '../../env_loader.php';
 
 use Bb\Blendingbites\Libs\Database\MySQL;
 use Bb\Blendingbites\Libs\Database\RecipesTable;
@@ -11,9 +11,7 @@ $recipe = $recipeTable->getById($id);
 <!DOCTYPE html>
 <html lang="en">
 <header>
-    <?php
-    include '_nav.php'
-    ?>
+    <?php include '../../_layout/nav_bar.php' ?>
 </header>
 
 
@@ -21,9 +19,9 @@ $recipe = $recipeTable->getById($id);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Details</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/bootstrap/5.1.3/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/font-awesome/5.10.0/all.min.css">
+    <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/css/font-awesome/5.10.0/all.min.css">
     <script src="../js/bootstrap/5.1.3/bootstrap.min.js"></script>
 
 </head>
@@ -31,9 +29,9 @@ $recipe = $recipeTable->getById($id);
 <body>
     <div class="container py-5">
         <div class="row">
-           
+
             <div class="col-md-6">
-               
+
                 <div class="text-center mb-4">
                     <img src="<?= $_ENV['BASE_PATH'] . '/' . htmlspecialchars($recipe['image']) ?>" alt="Food Image" class="img-fluid rounded detail-img">
                     <h3 class="mt-3"><?= $recipe['name'] ?></h3>

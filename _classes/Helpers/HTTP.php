@@ -14,4 +14,10 @@ class HTTP
         header("Location: $url");
         exit;
     }
+    public static function url($path)
+    {
+        $fullPath = '/'. $_ENV["DIR_NAME"] . $path;
+        $returnPath = rtrim($_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'], '/') . $fullPath;
+        return $returnPath;
+    }
 }

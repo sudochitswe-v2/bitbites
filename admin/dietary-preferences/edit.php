@@ -34,15 +34,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dietary Preferences</title>
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/bootstrap/5.1.3/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/font-awesome/5.10.0/all.min.css">
-    <script src="../../js/bootstrap/5.1.3/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/css/font-awesome/5.10.0/all.min.css">
+    <script src="../public/js/bootstrap/5.1.3/bootstrap.min.js"></script>
 </head>
 
 <body>
     <div class="d-flex vh-100">
-        <?php include '_nav.php' ?>
+        <?php include '../_shared/_nav.php' ?>
         <main class="container my-5 flex-grow-1 overflow-auto bg-light">
             <?php include '_form.php'; ?>
         </main>

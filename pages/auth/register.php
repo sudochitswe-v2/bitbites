@@ -1,5 +1,5 @@
 <?php
-include '../env_loader.php';
+include '../../env_loader.php';
 
 use Bb\Blendingbites\Helpers\HTTP;
 use Bb\Blendingbites\Helpers\ImageHandler;
@@ -46,10 +46,10 @@ try {
 <head>
     <title>Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap/5.1.3/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/css/style.css">
     <link rel="stylesheet" href="register.php.css">
-    <script src="../js/helper/image-preview.js"></script>
+    <script src="../../public/js/helper/image-preview.js"></script>
 </head>
 
 <body class="text-center">
@@ -90,7 +90,7 @@ try {
         <br>
 
         <a href="login.php">Login</a> <br>
-        <a href="../index.php">Back To Home</a>
+        <a href="<?= HTTP::url('/'); ?>">Back To Home</a>
     </div>
 </body>
 

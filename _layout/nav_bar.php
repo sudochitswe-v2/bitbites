@@ -1,6 +1,9 @@
 <?php session_start() ?>
 
 <?php
+
+use Bb\Blendingbites\Helpers\HTTP;
+
 $isAuth = isset($_SESSION['user']);
 $user = $isAuth ? $_SESSION['user'] : null;
 ?>
@@ -13,9 +16,8 @@ $user = $isAuth ? $_SESSION['user'] : null;
     </div>
 <?php endif ?>
 
-<link rel="stylesheet" href="css/template/nav.css">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py">
-    <a href="" class="navbar-brand p-0">
+    <a href="<?= HTTP::url('/') ?>" class="navbar-brand p-0">
         <h1 class="bb-text-primary m-0">
             <i class="fa fa-utensils me-3"></i>
         </h1>
@@ -45,16 +47,16 @@ $user = $isAuth ? $_SESSION['user'] : null;
                 </ul>
             </div>
         <?php else : ?>
-            <a href="pages/login.php" class="btn btn-primary py-2 px-4 d-lg-none text-black">Login</a>
+            <a href="<?= HTTP::url('/pages/auth/login.php'); ?>" class="btn btn-primary py-2 px-4 d-lg-none text-black">Login</a>
         <?php endif ?>
 
     </div>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0 pe-4">
-            <a href="pages/recipes.php" class="nav-item nav-link active">Recipe</a>
-            <a href="pages/about.php" class="nav-item nav-link">About</a>
+            <a href="<?= HTTP::url('/pages/recipes')?>" class="nav-item nav-link active">Recipe</a>
+            <a href="<?= HTTP::url('/pages/about') ?>" class="nav-item nav-link">About</a>
             <a href="#" class="nav-item nav-link">Community</a>
-            <a href="#" class="nav-item nav-link">Contact Us</a>
+            <a href="<?= HTTP::url('/pages/contact') ?>" class="nav-item nav-link">Contact Us</a>
             <div class="dropdown"><a href="#"
                     id="navbarDropDown"
                     class="nav-link dropdown-toggle"
@@ -90,6 +92,6 @@ $user = $isAuth ? $_SESSION['user'] : null;
                 </ul>
             </div>
         <?php else : ?>
-            <a href="pages/login.php" class="btn btn-primary py-2 px-4 d-none d-lg-block text-black">Login</a>
+            <a href="<?= HTTP::url('/pages/auth/login.php'); ?>" class="btn btn-primary py-2 px-4 d-none d-lg-block text-black">Login</a>
         <?php endif ?>
     </div>

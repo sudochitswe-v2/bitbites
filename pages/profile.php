@@ -24,7 +24,7 @@
                 <div class="border rounded p-4">
 
                     <div class="text-center mb-4">
-                        <img src="../images/bg.jpg" alt="Profile Picture" class="rounded-circle img-fluid" style="width: 150px; height: 150px;">
+                        <img src="../public/images/bg.jpg" alt="Profile Picture" class="rounded-circle img-fluid" style="width: 150px; height: 150px;">
                     </div>
 
                     <div class="mb-3">

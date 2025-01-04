@@ -1,6 +1,7 @@
 #Custom
 
-images/uploads/
+/public/images/uploads/
+/images/uploads/
 
 
 # Common ignored files and directories

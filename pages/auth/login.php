@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../env_loader.php';
+include '../../env_loader.php';
 
 use Bb\Blendingbites\Helpers\HTTP;
 use Bb\Blendingbites\Libs\Database\MySQL;
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($fail_attempts >= 3) {
             $_SESSION['blocked_at'] = $_SESSION['blocked_at'] ?? $futureBlockMinutes;
         }
-        HTTP::redirect("/pages/login.php", ["incorrect" =>  "$fail_attempts"]);
+        HTTP::redirect("/pages/auth/login.php", ["incorrect" =>  "$fail_attempts"]);
     }
 }
 
@@ -65,8 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../css/bootstrap/5.1.3/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/css/style.css">
     <style>
         .wrap {
             width: 100%;
@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
         <br>
 
-        <a href="register.php">Register</a>
+        <a href="<?= HTTP::url('/pages/auth/register.php'); ?>">Register</a>
     </div>
 </body>
 

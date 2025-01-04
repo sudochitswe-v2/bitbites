@@ -115,7 +115,7 @@
         <!-- Image on the Left -->
         <div class="col-md-6">
             <img
-                src="images/main.png"
+                src="public/images/main.png"
                 alt="Delicious Food"
                 class="img-fluid rounded" />
         </div>
@@ -151,7 +151,7 @@
             <div class="recipe-card">
                 <img
                     class="lg-img"
-                    src="images/ft1.jpg"
+                    src="public/images/ft1.jpg"
                     alt="Fusion Sushi Rolls"
                     class="img-fluid rounded" />
                 <div class="description">
@@ -168,7 +168,7 @@
                     <div class="recipe-card">
                         <img
                             class="sm-img"
-                            src="images/ft2.jpg"
+                            src="public/images/ft2.jpg"
                             alt="Spicy Thai Basil Chicken"
                             class="img-fluid rounded" />
                         <div class="description">
@@ -181,7 +181,7 @@
                     <div class="recipe-card">
                         <img
                             class="sm-img"
-                            src="images/ft5.jpg"
+                            src="public/images/ft5.jpg"
                             alt="Mediterranean Hummus Platter"
                             class="img-fluid rounded" />
                         <div class="description">
@@ -192,7 +192,7 @@
                 </div>
                 <div class="col-6">
                     <div class="recipe-card">
-                        <img class="sm-img" src="images/ft3.jpg"
+                        <img class="sm-img" src="public/images/ft3.jpg"
                             class="img-fluid rounded">
                         <div class="description">
                             <p>Crunchy nachos loaded with cheese and toppings.</p>
@@ -204,7 +204,7 @@
                     <div class="recipe-card">
                         <img
                             class="sm-img"
-                            src="images/ft4.jpg"
+                            src="public/images/ft4.jpg"
                             alt="Italian Truffle Pasta"
                             class="img-fluid rounded" />
                         <div class="description">
@@ -228,7 +228,7 @@
             <div class="recipe-card">
                 <img
                     class="lg-img"
-                    src="images/ct5.jpg"
+                    src="public/images/ct5.jpg"
                     alt="Vegan Jackfruit Tacos"
                     class="img-fluid rounded" />
                 <div class="description">
@@ -245,7 +245,7 @@
                     <div class="recipe-card">
                         <img
                             class="sm-img"
-                            src="images/ct1.jpg"
+                            src="public/images/ct1.jpg"
                             alt="Korean Kimchi Pancakes"
                             class="img-fluid rounded" />
                         <div class="description">
@@ -258,7 +258,7 @@
                     <div class="recipe-card">
                         <img
                             class="sm-img"
-                            src="images/ct2.jpg"
+                            src="public/images/ct2.jpg"
                             alt="Japanese Matcha Cheesecake"
                             class="img-fluid rounded" />
                         <div class="description">
@@ -271,7 +271,7 @@
                     <div class="recipe-card">
                         <img
                             class="sm-img"
-                            src="images/ct3.jpg"
+                            src="public/images/ct3.jpg"
                             alt="Middle Eastern Shakshuka"
                             class="img-fluid rounded" />
                         <div class="description">
@@ -284,7 +284,7 @@
                     <div class="recipe-card">
                         <img
                             class="sm-img"
-                            src="images/ct4.jpg"
+                            src="public/images/ct4.jpg"
                             alt="Indian Butter Chicken Pizza"
                             class="img-fluid rounded" />
                         <div class="description">
@@ -335,7 +335,7 @@
                 <!-- Slide 1 -->
                 <div class="carousel-item active">
                     <div class="event-item">
-                        <img src="images/ce4.png" class="d-block w-100" alt="Event 1" />
+                        <img src="public/images/ce4.png" class="d-block w-100" alt="Event 1" />
                         <div class="carousel-caption">
                             <h5>Fusion Fiesta</h5>
                             <p>
@@ -348,7 +348,7 @@
                 <!-- Slide 2 -->
                 <div class="carousel-item">
                     <div class="event-item">
-                        <img src="images/ce2.png" class="d-block w-100" alt="Event 2" />
+                        <img src="public/images/ce2.png" class="d-block w-100" alt="Event 2" />
                         <div class="carousel-caption">
                             <h5>Cooking Workshop</h5>
                             <p>
@@ -361,7 +361,7 @@
                 <!-- Slide 3 -->
                 <div class="carousel-item">
                     <div class="event-item">
-                        <img src="images/ce3.jpg" class="d-block w-100" alt="Event 3" />
+                        <img src="public/images/ce3.jpg" class="d-block w-100" alt="Event 3" />
                         <div class="carousel-caption">
                             <h5>Fusion Sushi Rolls</h5>
                             <p>
@@ -374,7 +374,7 @@
                 <!-- Slide 4 -->
                 <div class="carousel-item">
                     <div class="event-item">
-                        <img src="images/ce1.png" class="d-block w-100" alt="Event 4" />
+                        <img src="public/images/ce1.png" class="d-block w-100" alt="Event 4" />
                         <div class="carousel-caption">
                             <h5>Fusion Cook-Off</h5>
                             <p>

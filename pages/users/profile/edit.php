@@ -2,17 +2,18 @@
 <html lang="en">
 <header>
     <?php
-    include '_nav.php'
+    require_once '../../../env_loader.php';
+    include '../../../_layout/nav_bar.php'
     ?>
 </header>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/bootstrap/5.1.3/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/font-awesome/5.10.0/all.min.css">
-    <script src="../js/bootstrap/5.1.3/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../../public/css/style.css">
+    <link rel="stylesheet" href="../../../public/css/bootstrap/5.1.3/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../public/css/font-awesome/5.10.0/all.min.css">
+    <script src="../../../public/js/bootstrap/5.1.3/bootstrap.min.js"></script>
     <title>Edit Profile</title>
 </head>
 
@@ -65,7 +66,7 @@
     </div>
 
 
-    <?php include '../_layout/footer.php' ?>
+    <?php include '../../../_layout/footer.php' ?>
 </body>
 
 </html>

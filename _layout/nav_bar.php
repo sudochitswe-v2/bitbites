@@ -5,10 +5,10 @@
 use Bb\Blendingbites\Helpers\HTTP;
 
 $isAuth = isset($_SESSION['user']);
-$user = $isAuth ? $_SESSION['user'] : null;
+$authUser = $isAuth ? $_SESSION['user'] : null;
 ?>
 
-<?php if ($isAuth && $user->value == 2): ?>
+<?php if ($isAuth && $authUser->value == 2): ?>
     <div class="d-flex justify-content-center text-black">
         <a href="admin/" class=" text-black text-decoration-none text-decoration-underline">
             <h4>Go to Admin Panel</h4>
@@ -30,17 +30,17 @@ $user = $isAuth ? $_SESSION['user'] : null;
             <div class="dropdown d-lg-none">
                 <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                     id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="<?= $_ENV['BASE_PATH'] . '/' . $user->profile ?>" alt="Avatar" class="rounded-circle me-2" width="40"
+                    <img src="<?= $_ENV['BASE_PATH'] . '/' . $authUser->profile ?>" alt="Avatar" class="rounded-circle me-2" width="40"
                         height="40">
-                    <span><?= $user->name ?></span>
+                    <span><?= $authUser->name ?></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="<?= HTTP::url('/pages/users/profile/index.php?id=') . $authUser->id ?>">Profile</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
                     <li>
-                        <form action="_actions/users/logout.php" method="post">
+                        <form action="<?= HTTP::url('/_actions/users/logout.php') ?>" method="post">
                             <button class="dropdown-item" type="submit">Sign Out</button>
                         </form>
                     </li>
@@ -53,7 +53,7 @@ $user = $isAuth ? $_SESSION['user'] : null;
     </div>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0 pe-4">
-            <a href="<?= HTTP::url('/pages/recipes')?>" class="nav-item nav-link active">Recipe</a>
+            <a href="<?= HTTP::url('/pages/recipes') ?>" class="nav-item nav-link active">Recipe</a>
             <a href="<?= HTTP::url('/pages/about') ?>" class="nav-item nav-link">About</a>
             <a href="#" class="nav-item nav-link">Community</a>
             <a href="<?= HTTP::url('/pages/contact') ?>" class="nav-item nav-link">Contact Us</a>
@@ -75,17 +75,17 @@ $user = $isAuth ? $_SESSION['user'] : null;
             <div class="dropdown d-none d-lg-block">
                 <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                     id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="<?= $_ENV['BASE_PATH'] . '/' . $user->profile ?>" alt="Avatar" class="rounded-circle me-2" width="40"
+                    <img src="<?= $_ENV['BASE_PATH'] . '/' . $authUser->profile ?>" alt="Avatar" class="rounded-circle me-2" width="40"
                         height="40">
-                    <span><?= $user->name ?></span>
+                    <span><?= $authUser->name ?></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="<?= HTTP::url('/pages/users/profile/index.php?id=') . $authUser->id ?>">Profile</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
                     <li>
-                        <form action="_actions/users/logout.php" method="post">
+                        <form action="<?= HTTP::url('/_actions/users/logout.php') ?>" method="post">
                             <button class="dropdown-item" type="submit">Sign Out</button>
                         </form>
                     </li>

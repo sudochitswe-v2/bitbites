@@ -1,10 +1,22 @@
+<?php
+
+use Bb\Blendingbites\Helpers\HTTP;
+use Bb\Blendingbites\Libs\Database\MySQL;
+use Bb\Blendingbites\Libs\Database\UsersTable;
+
+require_once '../../../env_loader.php';
+
+$id = $_GET['id'];
+$usersTable = new UsersTable(new MySQL());
+$user = $usersTable->getById($id);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <header>
-    <?php
-    require_once '../../../env_loader.php'; 
-    include '../../../_layout/nav_bar.php' 
-    ?>
+    <?php include '../../../_layout/nav_bar.php' ?>
 </header>
 
 <head>
@@ -25,21 +37,24 @@
                 <div class="border rounded p-4">
 
                     <div class="text-center mb-4">
-                        <img src="../../../public/images/bg.jpg" alt="Profile Picture" class="rounded-circle img-fluid" style="width: 150px; height: 150px;">
+                        <img src="<?= $_ENV['BASE_PATH'] . '/' . htmlspecialchars($user['profile']) ?>" alt="Profile Picture" class="rounded-circle img-fluid" style="width: 150px; height: 150px;">
                     </div>
 
                     <div class="mb-3">
-                        <p><strong>User Name:</strong> John Doe</p>
-                        <p><strong>Role:</strong> Administrator</p>
-                        <p><strong>Mobile Phone:</strong> +1234567890</p>
-                        <p><strong>Email Address:</strong> johndoe@example.com</p>
+                        <p><strong>User Name:</strong><?= htmlspecialchars($user['name']) ?></p>
+                        <p><strong>Role:</strong><?= htmlspecialchars($user['role']) ?></p>
+                        <p><strong>Mobile Phone:</strong> <?= htmlspecialchars($user['phone']) ?></p>
+                        <p><strong>Email Address:</strong> <?= htmlspecialchars($user['email']) ?></p>
                     </div>
-
-                    <div class="text-center">
-                        <button class="btn btn-outline-primary text-black d-inline-flex align-items-center">
-                            <i class="fa fa-edit me-2"></i> Edit Information
-                        </button>
-                    </div>
+                    <!-- only allow user to edit their own profile -->
+                    <?php if ($isAuth && $authUser->id === $user['id']): ?>
+                        <div class="text-center">
+                            <a class="btn btn-outline-primary text-black d-inline-flex align-items-center"
+                                href="<?= HTTP::url('/pages/users/profile/edit.php?id=') . $user['id'] ?>">
+                                <i class="fa fa-edit me-2"></i> Edit Information
+                            </a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -47,4 +62,5 @@
 
 </body>
 <?php include '../../../_layout/footer.php' ?>
+
 </html>

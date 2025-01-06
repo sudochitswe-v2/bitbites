@@ -18,6 +18,15 @@ class Auth
             HTTP::redirect("/login.php");
         }
     }
+    static function requireAdminAccess()
+    {
+        if (self::check() && $_SESSION['user']->value == 2) {
+            exit();
+            // yo! vibe check passed
+        } else {
+            HTTP::redirect("/pages/error/401.php");
+        }
+    }
     static function checkIfAdmin()
     {
         if (self::check()) {

@@ -3,6 +3,7 @@
 namespace Bb\Blendingbites\Libs\Database;
 
 use Bb\Blendingbites\Libs\Database\MySQL;
+use PDO;
 
 class UsersTable
 {
@@ -49,5 +50,30 @@ class UsersTable
         $row = $statement->fetch();
 
         return $row ?? false;
+    }
+    public function getById($id)
+    {
+        $query = "SELECT users.*, roles.name AS role, roles.value
+            FROM users LEFT JOIN roles
+            ON users.role_id = roles.id
+            WHERE users.id = :id";
+
+        $statement = $this->db->prepare($query);
+        $statement->execute([':id' => $id]);
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function update($data)
+    {
+        $query = "UPDATE users SET
+            first_name = :first_name,
+            last_name = :last_name,
+            name = :name,
+            profile = :profile,
+            phone = :phone
+            WHERE id = :id";
+
+        $statement = $this->db->prepare($query);
+        $statement->execute($data);
     }
 }

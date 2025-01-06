@@ -18,8 +18,9 @@ $cuisines = $cuisinesTable->getAll();
 <head>
     <meta charset="UTF-8">
     <title><?= isset($recipe) ? 'Edit Recipe' : 'Add Recipe' ?></title>
-    <link rel="stylesheet" href="../../css/bootstrap/5.1.3/bootstrap.min.css">
-    <script src="../../js/helper/image-preview.js"></script>
+    <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
+    <script src="../../public/js/helper/image-preview.js"></script>
+    <script src="../../public/js/bootstrap/5.1.3/bootstrap.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/drmgz8wp6e6ll3e4f504h121zztu7gvvltimxaw5y4thr62r/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         tinymce.init({

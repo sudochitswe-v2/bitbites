@@ -42,6 +42,7 @@ $user = $usersTable->getById($id);
 
                     <div class="mb-3">
                         <p><strong>User Name:</strong><?= htmlspecialchars($user['name']) ?></p>
+                        <p><strong>Date Of Birth:</strong><?= htmlspecialchars($user['date_of_birth']) ?></p>
                         <p><strong>Role:</strong><?= htmlspecialchars($user['role']) ?></p>
                         <p><strong>Mobile Phone:</strong> <?= htmlspecialchars($user['phone']) ?></p>
                         <p><strong>Email Address:</strong> <?= htmlspecialchars($user['email']) ?></p>

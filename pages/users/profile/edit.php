@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'name' => $fullName,
             'phone' => $_POST['phone'],
             'profile' => $image ?? $user['profile'], // if null
+            'date_of_birth' => $_POST['date_of_birth'],
         ];
         $usersTable->update($data);
     } catch (\Throwable $th) {
@@ -65,12 +66,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         .image-preview {
             width: 150px;
-            /* Adjust size as needed */
             height: 150px;
-            /* Adjust size as needed */
             border: 2px dashed #ccc;
             border-radius: 50%;
-            /* Makes it circular */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -79,7 +77,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             background-position: center;
             background-color: #f9f9f9;
             overflow: hidden;
-            /* Ensures the image stays within the rounded border */
         }
 
         .image-preview span {
@@ -91,7 +88,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* Ensures the image covers the area without distortion */
         }
     </style>
 </head>
@@ -137,6 +133,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <input type="text" class="form-control" id="lastName"
                                 name="last_name"
                                 value="<?= htmlspecialchars($user['last_name']) ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="Date Of Birth" class="form label"><strong>Date Of Birth</strong></label>
+                            <input type="date" class="form-control" id="date_of_birth"
+                                name="date_of_birth"
+                                value="<?= htmlspecialchars($user['date_of_birth']) ?>">
                         </div>
                         <div class="mb-3">
                             <label for="role" class="form-label"><strong>Role</strong></label>

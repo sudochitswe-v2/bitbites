@@ -69,6 +69,7 @@ class UsersTable
             first_name = :first_name,
             last_name = :last_name,
             name = :name,
+            date_of_birth=:date_of_birth,
             profile = :profile,
             phone = :phone
             WHERE id = :id";

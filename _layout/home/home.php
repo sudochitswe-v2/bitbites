@@ -114,8 +114,10 @@
     <div class="row align-items-center">
         <!-- Image on the Left -->
         <div class="col-md-6">
-            <video width="320" height="240" autoloop muted src="public/images/homevd.mp4" type="video/mp4">
-            </video>
+            <img
+                src="public/images/main.png"
+                alt="Delicious Food"
+                class="img-fluid rounded" />
         </div>
 
         <!-- Mission and Meaning on the Right -->

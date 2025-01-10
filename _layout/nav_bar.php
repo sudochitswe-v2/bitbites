@@ -18,8 +18,8 @@ $authUser = $isAuth ? $_SESSION['user'] : null;
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py">
     <a href="<?= HTTP::url('/') ?>" class="navbar-brand p-0">
-        <h1 class="bb-text-primary m-0">
-            <i class="fa fa-utensils me-3"></i>
+        <h1 class="align-items-center">
+            <img style="width: 45px;" src="<?= HTTP::url('/public/images/favico.png') ?>" alt="logo">
         </h1>
     </a>
     <div class="d-flex align-items-center">
@@ -57,7 +57,8 @@ $authUser = $isAuth ? $_SESSION['user'] : null;
             <a href="<?= HTTP::url('/pages/about') ?>" class="nav-item nav-link">About</a>
             <a href="#" class="nav-item nav-link">Community</a>
             <a href="<?= HTTP::url('/pages/contact') ?>" class="nav-item nav-link">Contact Us</a>
-            <div class="dropdown"><a href="#"
+            <div class="dropdown">
+                <a href="#"
                     id="navbarDropDown"
                     class="nav-link dropdown-toggle"
                     role="button"

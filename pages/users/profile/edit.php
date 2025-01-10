@@ -6,46 +6,15 @@ use Bb\Blendingbites\Libs\Database\MySQL;
 use Bb\Blendingbites\Libs\Database\UsersTable;
 
 require_once '../../../env_loader.php';
+include '../../../_classes/Helpers/message_box.php';
 
 
 $id = $_GET['id'];
 $usersTable = new UsersTable(new MySQL());
 $user = $usersTable->getById($id);
-
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    try {
-        $image = null;
-        if (isset($_FILES["image"]) && $_FILES["image"]["size"] != 0) {
-            $image = ImageHandler::upload($_FILES);
-        }
-        $fullName = $_POST['first_name'] . ' ' . $_POST['last_name'];
-        $data = [
-            'id' => $_POST['id'],
-            'first_name' => $_POST['first_name'],
-            'last_name' => $_POST['last_name'],
-            'name' => $fullName,
-            'phone' => $_POST['phone'],
-            'profile' => $image ?? $user['profile'], // if null
-            'date_of_birth' => $_POST['date_of_birth'],
-        ];
-        $usersTable->update($data);
-    } catch (\Throwable $th) {
-        $error = $th->getMessage();
-        $_GET['error'] = $error;
-    }
-}
-
-
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-<header>
-    <?php include '../../../_layout/nav_bar.php' ?>
-</header>
 
 <head>
     <meta charset="UTF-8">
@@ -53,6 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../../../public/css/style.css">
     <link rel="stylesheet" href="../../../public/css/bootstrap/5.1.3/bootstrap.min.css">
     <link rel="stylesheet" href="../../../public/css/font-awesome/5.10.0/all.min.css">
+    <link rel="stylesheet" href="../../../public/css/sweetalert2/sweetalert2.min.css">
+    <script src="../../../public/js/sweetalert2/sweetalert2.min.js"></script>
     <script src="../../../public/js/bootstrap/5.1.3/bootstrap.min.js"></script>
     <script src="../../../public/js/helper/image-preview.js"></script>
     <title>Edit Profile</title>
@@ -91,6 +62,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     </style>
 </head>
+<header>
+    <?php include '../../../_layout/nav_bar.php' ?>
+</header>
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    try {
+        $image = null;
+        if (isset($_FILES["image"]) && $_FILES["image"]["size"] != 0) {
+            $image = ImageHandler::upload($_FILES);
+        }
+        $fullName = $_POST['first_name'] . ' ' . $_POST['last_name'];
+        $data = [
+            'id' => $_POST['id'],
+            'first_name' => $_POST['first_name'],
+            'last_name' => $_POST['last_name'],
+            'name' => $fullName,
+            'phone' => $_POST['phone'],
+            'profile' => $image ?? $user['profile'], // if null
+            'date_of_birth' => $_POST['date_of_birth'],
+        ];
+        $usersTable->update($data);
+        showMessage('updated!', 'success');
+        // make sure showMessage method call after swal is loaded from head tag 
+    } catch (\Throwable $th) {
+        $error = $th->getMessage();
+        $_GET['error'] = $error;
+    }
+}
+?>
 
 <body>
     <div class="container py-5">

@@ -10,7 +10,7 @@ $authUser = $isAuth ? $_SESSION['user'] : null;
 
 <?php if ($isAuth && $authUser->value == 2): ?>
     <div class="d-flex justify-content-center text-black">
-        <a href="admin/" class=" text-black text-decoration-none text-decoration-underline">
+        <a href="<?= HTTP::url('/admin') ?>" class=" text-black text-decoration-none text-decoration-underline">
             <h4>Go to Admin Panel</h4>
         </a>
     </div>

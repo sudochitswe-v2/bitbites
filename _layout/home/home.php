@@ -114,10 +114,13 @@
     <div class="row align-items-center">
         <!-- Image on the Left -->
         <div class="col-md-6">
-            <img
+            <!-- <img
                 src="public/images/main.png"
                 alt="Delicious Food"
-                class="img-fluid rounded" />
+                class="img-fluid rounded" /> -->
+            <video autoplay muted loop>
+                <source src="public/videos/ads.mp4" type="video/mp4">
+            </video>
         </div>
 
         <!-- Mission and Meaning on the Right -->

@@ -16,19 +16,18 @@
     <link rel="stylesheet" href="../../public/css/style.css">
     <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/css/font-awesome/5.10.0/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <script src="../../public/js/bootstrap/5.1.3/bootstrap.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
     <style>
-        
-
         .about-us-section {
             position: relative;
             height: 100vh;
-            background: url('../../public/images/desert.jpg') no-repeat center center/cover;
-            color: white;
+            background: url('../../public/images/about.jpg') no-repeat center center/cover;
+            color: black;
             display: flex;
-            justify-content: center;
+            justify-content: right;
             align-items: center;
             text-align: center;
         }
@@ -39,20 +38,21 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(59, 47, 47, 0.72);
 
         }
 
         .about-us-content {
             position: relative;
             z-index: 2;
-            padding: 20px;
+            padding: 10px;
+            justify-content: center;
         }
 
         .about-us-content h1 {
             font-size: 3rem;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .about-us-content p {
@@ -62,7 +62,6 @@
             margin: 0 auto;
         }
 
-        /* Add subtle hover effects for images */
         .img-fluid {
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
@@ -98,75 +97,39 @@
         }
 
         .btn-outline-dark:hover {
-            background-color: #8b5e34;
+            background-color: rgb(22, 14, 6);
             color: #fff;
         }
 
-        /* Team Card Styling */
         .team-card {
+            transition: all 0.3s ease;
             text-align: center;
             position: relative;
+            padding: 15px;
+            border-radius: 20px;
         }
 
-        .team-image-wrapper {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
+        .team-card:hover {
+            background-color: rgb(22, 24, 28);
+            color: #fff;
         }
 
-        .team-image-wrapper img {
-            width: 100%;
-            height: auto;
+        .team-card img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
             object-fit: cover;
-            transition: transform 0.3s ease-in-out;
         }
 
-        .team-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+        .social-icons a {
+            color: inherit;
+            margin: 0 5px;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
             color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .team-overlay p {
-            margin-bottom: 1rem;
-        }
-
-        .social-links a {
-            color: #fff;
-            margin: 0 0.5rem;
-            font-size: 1.5rem;
-            transition: color 0.3s ease-in-out;
-        }
-
-        .social-links a:hover {
-            color: #8b5e34;
-
-        }
-
-
-        .team-image-wrapper:hover img {
-            transform: scale(1.1);
-        }
-
-        .team-image-wrapper:hover .team-overlay {
-            opacity: 1;
-        }
-
-
-        .team-card p {
-            font-weight: bold;
-            margin-top: 1rem;
         }
     </style>
 </head>
@@ -195,7 +158,7 @@
             <div class="col-md-6">
                 <div class="row g-3">
                     <div class="col-6" data-aos="fade-up">
-                        <img src="../../public/images/cp3.jpg" alt="Culinary Philosophy 1" class="img-fluid rounded">
+                        <img src="../../public/images/cp4.jpg" alt="Culinary Philosophy 1" class="img-fluid rounded">
                     </div>
                     <div class="col-6" data-aos="fade-up">
                         <img src="../../public/images/cp3.jpg" alt="Culinary Philosophy 1" class="img-fluid rounded">
@@ -210,7 +173,7 @@
             </div>
 
             <!-- Right Column: Information -->
-            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="col-md-6 mt-3" data-aos="fade-up" data-aos-delay="300">
                 <h2>Our Culinary Philosophy</h2>
                 <p>
                     "At the heart of our culinary philosophy is a passion for creativity, quality, and community.
@@ -228,88 +191,94 @@
         </div>
     </div>
 
-    <div class="container my-5">
-        <h2 class="text-center mb-4">Meet Our Team</h2>
-        <div class="row g-4">
+    <<div class="container py-10">
+        <h2 class="text-start mb-10"><strong>Meet Our Team</strong></h2>
+        <p>At Food Fusion, it takes a talented and dedicated team to bring our vision to life. Each member of our team plays a vital role in creating a seamless and delightful experience for our audience, from recipe lovers to culinary explorers.</p>
+        <div class="row justify-content-center gy-4">
             <!-- Team Member 1 -->
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="team-card">
-                    <div class="team-image-wrapper">
-                        <img src="https://xsgames.co/randomusers/assets/avatars/female/48.jpg" alt="Team Member 1" class="img-fluid rounded">
-                        <div class="team-overlay">
-                            <p class="team-role">Chef & Recipe Creator</p>
-                            <div class="social-links">
-                                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-                                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-                                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
+            <div class="col-md-3">
+                <div class="team-card p-3 shadow">
+                    <img src="../../public/images/avater1.jpg" alt="Team Member">
+                    <h5 class="mt-3">John Doe</h5>
+                    <p>Frontend Developer</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
                     </div>
-                    <p class="text-center mt-2">John Doe</p>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="team-card">
-                    <div class="team-image-wrapper">
-                        <img src="https://xsgames.co/randomusers/assets/avatars/female/49.jpg" alt="Team Member 1" class="img-fluid rounded">
-                        <div class="team-overlay">
-                            <p class="team-role">Chef & Recipe Creator</p>
-                            <div class="social-links">
-                                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-                                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-                                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
+
+            <!-- Team Member 2 -->
+            <div class="col-md-3">
+                <div class="team-card p-3 shadow">
+                    <img src="../../public/images/avater2.jpg" alt="Team Member">
+                    <h5 class="mt-3">Jane Smith</h5>
+                    <p>Backend Developer</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
                     </div>
-                    <p class="text-center mt-2">John Doe</p>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="team-card">
-                    <div class="team-image-wrapper">
-                        <img src="https://xsgames.co/randomusers/assets/avatars/female/32.jpg" alt="Team Member 1" class="img-fluid rounded">
-                        <div class="team-overlay">
-                            <p class="team-role">Chef & Recipe Creator</p>
-                            <div class="social-links">
-                                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-                                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-                                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
+
+            <!-- Team Member 3 -->
+            <div class="col-md-3">
+                <div class="team-card p-3 shadow">
+                    <img src="../../public/images/avater3.jpg" alt="Team Member">
+                    <h5 class="mt-3">Alice Brown</h5>
+                    <p>UI/UX Designer</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
                     </div>
-                    <p class="text-center mt-2">John Doe</p>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="team-card">
-                    <div class="team-image-wrapper">
-                        <img src="https://xsgames.co/randomusers/assets/avatars/female/35.jpg" alt="Team Member 1" class="img-fluid rounded">
-                        <div class="team-overlay">
-                            <p class="team-role">Chef & Recipe Creator</p>
-                            <div class="social-links">
-                                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-                                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-                                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
+
+            <!-- Team Member 4 -->
+            <div class="col-md-3">
+                <div class="team-card p-3 shadow">
+                    <img src="../../public/images/avater4.jpg" alt="Team Member">
+                    <h5 class="mt-3">Mike Johnson</h5>
+                    <p>Project Manager</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
                     </div>
-                    <p class="text-center mt-2">John Doe</p>
                 </div>
             </div>
         </div>
-    </div>
+        </div>
+        <div class="text-center px-5">
+            <p>
+            <ul class>
+                <li><strong>Emma As a Front-End Designer</strong>: Crafting the visual magic of our website, our front-end designer ensures an intuitive and stunning user experience, bringing every click and scroll to life with vibrant design and creativity.</li>
+                <br>
+                <li><strong>Kevin As Back-End Developer</strong>: Behind the scenes, our back-end developer ensures that Food Fusion runs smoothly and efficiently, managing the technical side to provide a seamless digital experience.</li>
+                <br>
+                <li><strong>Lei Lei As Admin</strong>: The backbone of our operations, our admin oversees day-to-day tasks and keeps everything organized, ensuring Food Fusion stays on track and thriving.</li>
+                <br>
+                <li><strong> Seinn As a General Manager</strong>: Leading the charge, our General Manager combines strategic vision with operational excellence to ensure that Food Fusion continues to innovate and inspire in the culinary world.
+                    <br>
+            </ul>
+            <h5><Strong>"Together, our team works with passion and dedication to bring you the best of Food Fusion."</strong></h5>
+            </p>
+        </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>
-        AOS.init();
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl);
-        });
-    </script>
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+        <script>
+            AOS.init();
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        </script>
 
-    <?php include '../../_layout/footer.php' ?>
+        <?php include '../../_layout/footer.php' ?>
 
 </body>
 

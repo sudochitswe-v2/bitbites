@@ -20,13 +20,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe_Collection</title>
     <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="shortcut icon" href="../../public/images/favico.png" type="image/png">
     <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/css/font-awesome/5.10.0/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../../public/js/bootstrap/5.1.3/bootstrap.min.js"></script>
     <script src="../../public/js/bootstrap/5.1.3/bootstrap.bundle.min.js"></script>
 
 </head>
 <style>
+    body {
+        background-color: rgb(210, 201, 201);
+    }
+
     .input-group .form-control:hover,
     .input-group .form-control:focus {
         box-shadow: none;
@@ -48,9 +54,6 @@
         object-fit: cover;
     }
 </style>
-<?php
-
-?>
 
 <body>
     <!-- Welcome Section -->
@@ -67,12 +70,17 @@
             <h2 class="mb-4">Find Your Favorite Recipes</h2>
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <div class="input-group">
-                        <button class="btn btn-outline-secondary" type="button" id="search-button">
-                            <i class="fa fa-search"></i>
-                        </button>
-                        <input type="text" class="form-control" placeholder="Search for recipes..." aria-label="Search">
-                    </div>
+                    <form id="search" method="POST" action="hidden">
+
+                        <div class="input-group">
+                            <button class="btn btn-outline-secondary" type="submit" id="search-button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            <input type="text" name="name" class="form-control" placeholder="Search for recipes..." aria-label="Search">
+
+
+                        </div>
+                    </form>
                 </div>
                 <div class="col-md-auto">
                     <div class="dropdown">
@@ -108,7 +116,7 @@
     <section class="py-5">
         <div class="container">
             <h2 class="text-center mb-4">Our Recipes</h2>
-            <div class="row gy-4">
+            <div id="recipesGrid" class="row gy-4">
                 <?php foreach ($recipes as $recipe): ?>
                     <div class="col-md-6">
                         <div class="card h-100">
@@ -151,6 +159,19 @@
         heart.classList.remove('bi-heart');
         heart.classList.add('bi-heart-fill');
     }
+    $(document).ready(function() {
+        $('#search').on('submit', function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: '_search.php',
+                type: 'POST',
+                data: $(this).serialize(),
+                success: function(response) {
+                    $('#recipesGrid').html(response);
+                }
+            })
+        })
+    })
 </script>
 
 </html>

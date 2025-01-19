@@ -53,7 +53,6 @@
 
     .recipe-card:hover .description {
         opacity: 1;
-        /* Display description on hover */
     }
 
     /* Explore More button styling */
@@ -112,14 +111,9 @@
 
 <section class="container my-5">
     <div class="row align-items-center">
-        <!-- Image on the Left -->
         <div class="col-md-6">
-            <!-- <img
-                src="public/images/main.png"
-                alt="Delicious Food"
-                class="img-fluid rounded" /> -->
-            <video autoplay muted loop>
-                <source src="public/videos/ads.mp4" type="video/mp4">
+            <video class="img-fluid" autoplay muted loop>
+                <source src="public/videos/salad.mp4" type="video/mp4">
             </video>
         </div>
 
@@ -140,7 +134,7 @@
 
             <!-- Read More Button -->
             <a
-                href="pages/about.php"
+                href="pages/about/index.php"
                 class="btn btn-outline-primary mt-3">Read More...</a>
         </div>
     </div>
@@ -219,12 +213,12 @@
             </div>
         </div>
     </div>
-    <a href="recipes_collection.html" class="btn btn-explore-more mt-3">Explore More</a>
+    <a href="pages/recipes/index.php" class="btn btn-explore-more btn-outline-primary mt-3">Explore More</a>
 </section>
 
 <!-- Section 3: Culinary Trends -->
 <section class="container my-5">
-    <h2 class="text-center mb-4">Culinary Trends</h2>
+    <h2 class="text-center mb-3">Culinary Trends</h2>
     <div class="row">
         <!-- Latest Trend Food (Left) -->
         <div class="col-md-6">
@@ -299,7 +293,7 @@
             </div>
         </div>
     </div>
-    <a href="recipes_collection.html" class="btn btn-explore-more mt-3">Explore More</a>
+    <a href="pages/recipes/index.php" class="btn btn-explore-more btn-outline-primary mt-3">Explore More</a>
 </section>
 
 <!-- Events Section -->
@@ -307,7 +301,7 @@
     <div class="container">
         <h2 class="text-center mb-4">Upcoming Events</h2>
         <div id="eventsCarousel" class="carousel slide" data-bs-ride="carousel">
-            <!-- Indicators (Discs) -->
+            
             <div class="carousel-indicators">
                 <button
                     type="button"

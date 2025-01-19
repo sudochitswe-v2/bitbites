@@ -20,11 +20,18 @@ $recipe = $recipeTable->getById($id);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Details</title>
     <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="shortcut icon" href="../../public/images/favico.png" type="image/png">
     <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/css/font-awesome/5.10.0/all.min.css">
     <script src="../js/bootstrap/5.1.3/bootstrap.min.js"></script>
 
 </head>
+<style>
+    body {
+        background-color: rgb(210, 201, 201);
+
+    }
+</style>
 
 <body>
     <div class="container py-5">
@@ -33,7 +40,7 @@ $recipe = $recipeTable->getById($id);
             <div class="col-md-6">
 
                 <div class="text-center mb-4">
-                    <img src="<?= $_ENV['BASE_PATH'] . '/' . htmlspecialchars($recipe['image']) ?>" alt="Food Image" class="img-fluid rounded detail-img">
+                    <img src="<?= $_ENV['BASE_PATH'] . '/' . htmlspecialchars($recipe['image']) ?>" alt="Food Image" class="img-fluid rounded border border-dark border-2 detail-img">
                     <h3 class="mt-3"><?= $recipe['name'] ?></h3>
                 </div>
                 <!-- Ingredients Section -->
@@ -49,7 +56,7 @@ $recipe = $recipeTable->getById($id);
                 <div class="mb-4">
                     <p><strong>Difficulty Level:</strong> <?= $recipe['difficulty']['name'] ?></p>
                     <p><strong>Cuisine Type:</strong> <?= $recipe['cuisine']['name'] ?></p>
-                    <p><strong>Posted By:</strong> Chef John</p>
+                    <p><strong>Posted By:</strong> Blendingbites Admin</p>
                 </div>
                 <div>
                     <h4>Description</h4>
@@ -62,13 +69,13 @@ $recipe = $recipeTable->getById($id);
 
         <!-- Back to Recipes Button -->
         <div class="text-end mt-5">
-            <a href="recipes.php" class="btn btn-outline-primary d-inline-flex align-items-center text-black">
+            <a href="../recipes/index.php" class="btn btn-outline-primary d-inline-flex align-items-center text-black">
                 <i class="fa fa-arrow-left me-2"></i> Back to Recipes
             </a>
         </div>
     </div>
 
-    <?php include '../_layout/footer.php' ?>
+    <?php include '../../_layout/footer.php' ?>
 </body>
 
 </html>

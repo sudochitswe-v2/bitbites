@@ -17,6 +17,7 @@ $cuisines = $cuisinesTable->getAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipes</title>
     <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="shortcut icon" href="../../public/images/favico.png" type="image/png">
     <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/css/font-awesome/5.10.0/all.min.css">
     <script src="../public/js/bootstrap/5.1.3/bootstrap.min.js"></script>
@@ -27,7 +28,7 @@ $cuisines = $cuisinesTable->getAll();
         <?php include '../_shared/_nav.php' ?>
         <main class="container my-2 flex-grow-1 overflow-auto bg-light">
             <div class="d-flex sticky-top justify-content-between align-items-center mb-4 bg-light">
-                <h1 class="text-primary">Cuisines</h1>
+                <h1 class="text-black">Cuisines</h1>
                 <a href="add.php" class="btn btn-info mb-3">Add New Cuisine</a>
             </div>
 
@@ -56,7 +57,7 @@ $cuisines = $cuisinesTable->getAll();
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>

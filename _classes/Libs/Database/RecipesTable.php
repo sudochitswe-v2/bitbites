@@ -2,6 +2,7 @@
 
 namespace Bb\Blendingbites\Libs\Database;
 
+use ArrayObject;
 use Bb\Blendingbites\Libs\Database\MySQL;
 use PDO;
 use PDOException;
@@ -14,8 +15,7 @@ class RecipesTable
     {
         $this->db = $db->connect();
     }
-
-    public function getAll()
+    public function search($text)
     {
         $sql = "
             SELECT
@@ -43,15 +43,21 @@ class RecipesTable
             LEFT JOIN difficulties d ON r.difficulty_id = d.id
             LEFT JOIN cuisines c ON r.cuisine_id = c.id
             LEFT JOIN favouriates f ON r.id = f.recipe_id
-            ORDER BY r.id DESC;
+            WHERE r.name LIKE :text
         ";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':text' => "%$text%"]);
+        $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
-        $statement = $this->db->query($sql);
-        $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
+        $groupedRecipes = self::groupRecipes($results);
+        return array_values($groupedRecipes);
+    }
 
-        // Grouping the data by recipe_id
+
+    public function groupRecipes(array $data)
+    {
         $groupedRecipes = [];
-        foreach ($results as $row) {
+        foreach ($data as $row) {
             $recipeId = $row['recipe_id'];
 
             if (!isset($groupedRecipes[$recipeId])) {
@@ -91,7 +97,46 @@ class RecipesTable
                 $groupedRecipes[$recipeId]['liked_user_ids'][] = $row['liked_user_id'];
             }
         }
+        return $groupedRecipes;
+    }
 
+    public function getAll()
+    {
+        $sql = "
+            SELECT
+                r.id AS recipe_id,
+                r.name AS recipe_name,
+                r.image,
+                r.short_description,
+                r.description,
+                
+                dp.id AS dietary_preference_id,
+                dp.name AS dietary_preference_name,
+                
+                d.id AS difficulty_id,
+                d.name AS difficulty_name,
+                d.value AS difficulty_value,
+                
+                c.id AS cuisine_id,
+                c.name AS cuisine_name,
+                
+                f.user_id AS liked_user_id
+                
+            FROM recipes r
+            LEFT JOIN recipe_dietary_preferences rdp ON r.id = rdp.recipe_id
+            LEFT JOIN dietary_preferences dp ON rdp.dietary_preference_id = dp.id
+            LEFT JOIN difficulties d ON r.difficulty_id = d.id
+            LEFT JOIN cuisines c ON r.cuisine_id = c.id
+            LEFT JOIN favouriates f ON r.id = f.recipe_id
+            ORDER BY r.id DESC;
+        ";
+
+        $statement = $this->db->query($sql);
+        $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
+
+        // Grouping the data by recipe_id
+
+        $groupedRecipes = self::groupRecipes($results);
         return array_values($groupedRecipes);
     }
 
@@ -107,12 +152,12 @@ class RecipesTable
         $stmt = $this->db->prepare($query);
         $stmt->execute([':id' => $id]);
         $recipe = $stmt->fetch(PDO::FETCH_ASSOC);
-        $cuisineTable= new CuisinesTable(new MySQL());
-        $difficultiesTable=new DifficultiesTable(new MySQL());
-        $cuisine=$cuisineTable->getById($recipe['cuisine_id']);
-        $difficulty=$difficultiesTable->getById($recipe['difficulty_id']);
-        $recipe['difficulty']=$difficulty;
-        $recipe['cuisine']=$cuisine;
+        $cuisineTable = new CuisinesTable(new MySQL());
+        $difficultiesTable = new DifficultiesTable(new MySQL());
+        $cuisine = $cuisineTable->getById($recipe['cuisine_id']);
+        $difficulty = $difficultiesTable->getById($recipe['difficulty_id']);
+        $recipe['difficulty'] = $difficulty;
+        $recipe['cuisine'] = $cuisine;
         return $recipe;
     }
     public function update($data)

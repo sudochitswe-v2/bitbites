@@ -3,6 +3,9 @@
     --secondary: #000000;
 }
 
+/* .body{
+            background-color: rgb(210, 201, 201) !important;
+} */
 
 .bb-text-primary {
     color: var(--primary) !important;
@@ -47,3 +50,10 @@
      object-fit: cover;
      transition: transform 0.3s ease;
  }
+  input:focus {
+      border-color: black !important;
+      box-shadow: none !important;
+  }
+  .btn-close:focus {
+      box-shadow: none !important;
+  }

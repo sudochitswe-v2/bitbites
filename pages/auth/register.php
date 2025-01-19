@@ -48,7 +48,9 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="shortcut icon" href="../../public/images/favico.png" type="image/png">
     <link rel="stylesheet" href="register.php.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../../public/js/helper/image-preview.js"></script>
 </head>
 
@@ -64,13 +66,14 @@ try {
 
         <form method="post" enctype="multipart/form-data">
             <div class="image-preview-container">
-                <label for="image" class="image-preview" id="imagePreview">
+                <label for="image" class="image-preview pt-2" id="imagePreview">
                     <span>Click to Uplode Photo</span>
                 </label>
                 <input type="file" name="image" id="image" class="form-control"
                     accept="image/*" required style="display: none;">
             </div>
             <br>
+
             <input type="text" name="first_name" class="form-control mb-2" placeholder="First Name" required>
 
             <input type="text" name="last_name" class="form-control mb-2" placeholder="Last Name" required>
@@ -83,14 +86,13 @@ try {
 
             <input type="password" name="password" class="form-control mb-2" placeholder="Password" required>
 
-            <button type="submit" class="w-100 btn btn-lg btn-primary text-black">
+            <button type="submit" class="w-50 btn btn-md mt-1 btn-primary text-black">
                 Register
             </button>
         </form>
-        <br>
 
-        <a href="login.php">Login</a> <br>
-        <a href="<?= HTTP::url('/'); ?>">Back To Home</a>
+        <a href="login.php" class="w-50 btn btn-md mt-1 btn-primary text-black">Login</a> <br>
+        <a href="<?= HTTP::url('/'); ?>" class="text-black">Back To Home</a>
     </div>
 </body>
 

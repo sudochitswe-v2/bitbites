@@ -92,7 +92,47 @@ $authUser = $isAuth ? $_SESSION['user'] : null;
                     </li>
                 </ul>
             </div>
+
         <?php else : ?>
             <a href="<?= HTTP::url('/pages/auth/login.php'); ?>" class="btn btn-primary py-2 px-4 d-none d-lg-block text-black">Login</a>
         <?php endif ?>
     </div>
+
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner" class="position-fixed bottom-0 start-50 translate-middle-x p-3 bg-light shadow rounded w-75" style="z-index: 1050;">
+        <div class="d-flex align-items-center">
+            <div class="flex-grow-1">
+                <h5 class="fw-bold">We use cookies!</h5>
+                <p class="mb-2">Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent.
+                    <a href="#" class="text-black fw-semibold">Let me choose</a>
+                </p>
+            </div>
+
+            <div class=" flex-column ms-4">
+                <button id="acceptCookies" class="btn btn-dark mb-2">Accept all</button>
+                <button id="rejectCookies" class="btn btn-light border-dark">Reject all</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Check if cookies are already accepted or rejected
+            if (localStorage.getItem("cookieConsent") === "accepted" || localStorage.getItem("cookieConsent") === "rejected") {
+                document.getElementById("cookieBanner").style.display = "none";
+            }
+
+            // Accept cookies
+            document.getElementById("acceptCookies").addEventListener("click", function() {
+                localStorage.setItem("cookieConsent", "accepted");
+                document.getElementById("cookieBanner").style.display = "none";
+            });
+
+            // Reject cookies
+            document.getElementById("rejectCookies").addEventListener("click", function() {
+                localStorage.setItem("cookieConsent", "rejected");
+                document.getElementById("cookieBanner").style.display = "none";
+            });
+        });
+    </script>

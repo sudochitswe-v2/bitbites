@@ -149,6 +149,7 @@
     </section>
     <?php include '../../_layout/footer.php' ?>
 </body>
+
 <script>
     function increaseLikes(heart) {
         let likeCount = heart.nextElementSibling;

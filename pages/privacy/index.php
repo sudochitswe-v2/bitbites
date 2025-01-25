@@ -9,7 +9,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/css/style.css">
-    <link rel="shortcut icon" href="../../public/images/favico.png" type="image/png">
     <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/css/font-awesome/5.10.0/all.min.css">
     <script src="../../public/js/bootstrap/5.1.3/bootstrap.min.js"></script>
@@ -17,7 +16,7 @@
     <title>Privacy Policy</title>
 </head>
 
-<body>
+<body style="background: var(--primary);">
     <div class="container mt-5">
         <div class="row">
             <div class="col-12 text-center">

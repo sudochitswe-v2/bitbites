@@ -12,6 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../public/images/favico.png" type="image/png">
     <title>About Us - FoodFusion</title>
     <link rel="stylesheet" href="../../public/css/style.css">
     <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
@@ -191,7 +192,7 @@
         </div>
     </div>
 
-    <<div class="container py-10">
+    <div class="container py-10">
         <h2 class="text-start mb-10"><strong>Meet Our Team</strong></h2>
         <p>At Food Fusion, it takes a talented and dedicated team to bring our vision to life. Each member of our team plays a vital role in creating a seamless and delightful experience for our audience, from recipe lovers to culinary explorers.</p>
         <div class="row justify-content-center gy-4">

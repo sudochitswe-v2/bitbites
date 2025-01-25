@@ -1,21 +1,21 @@
 <?php
 
-use Bb\Blendingbites\Libs\Database\ContactsTable;
+use Bb\Blendingbites\Libs\Database\EnquiriesTable;
 use Bb\Blendingbites\Libs\Database\MySQL;
 
 require_once '../../env_loader.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = [
-        'first_name' => $_POST['first_name'],
-        'last_name' => $_POST['last_name'],
+
+        'name' => $_POST['first_name'] . $_POST['last_name'],
         'email' => $_POST['email'],
         'phone' => $_POST['phone'],
         'message' => $_POST['message'],
     ];
-    $contactsTable = new ContactsTable(new MySQL());
+    $enquiriesTable = new EnquiriesTable(new MySQL());
 
     try {
-        $contactsTable->insert($data);
+        $enquiriesTable->insert($data);
         $_GET['success'] = "Your message has been sent. Thank you for your message!";
     } catch (\Throwable $th) {
         $_GET['error'] = $th->getMessage();

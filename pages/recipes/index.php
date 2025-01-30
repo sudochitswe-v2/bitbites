@@ -3,13 +3,23 @@
 
 
 <?php
+session_start();
 include '../../env_loader.php';
 
 use Bb\Blendingbites\Helpers\HTTP;
+use Bb\Blendingbites\Libs\Database\CuisinesTable;
+use Bb\Blendingbites\Libs\Database\DifficultiesTable;
 use Bb\Blendingbites\Libs\Database\MySQL;
 use Bb\Blendingbites\Libs\Database\RecipesTable;
 
-$recipesTable = new RecipesTable(new MySQL());
+$connection = new MySQL();
+
+$recipesTable = new RecipesTable($connection);
+$difficultiesTable = new DifficultiesTable($connection);
+$cuisinesTable = new CuisinesTable($connection);
+
+$difficulties = $difficultiesTable->getAll();
+$cuisines = $cuisinesTable->getAll();
 $recipes = $recipesTable->getAll();
 
 ?>
@@ -24,7 +34,6 @@ $recipes = $recipesTable->getAll();
     <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/css/font-awesome/5.10.0/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../../public/js/bootstrap/5.1.3/bootstrap.min.js"></script>
     <script src="../../public/js/bootstrap/5.1.3/bootstrap.bundle.min.js"></script>
 </head>
 <header>
@@ -88,14 +97,9 @@ $recipes = $recipesTable->getAll();
                 <div class="col-md-auto">
                     <select class="form-select" id="cuisineFilter" methos="POST" action="_search.php">
                         <option value="">All Cuisines</option>
-                        <option value="Asian Cuisine">Asian Cuisine</option>
-                        <option value="Western Cuisine">Western Cuisine</option>
-                        <option value="Mediterranean Cuisine">Mediterranean Cuisine</option>
-                        <option value="Latin American Cuisine">Latin American Cuisine</option>
-                        <option value="Asian-Mexican Cuisine">Asian-Mexican Cuisine</option>
-                        <option value="European Cuisine">European Cuisine</option>
-                        <option value="Middle Eastern Cuisine">Middle Eastern Cuisine</option>
-                        <option value="Asian Italian Cuisine">Asian-Italian Cuisine</option>
+                        <?php foreach ($cuisines as $cuisine) : ?>
+                            <option value="<?= $cuisine['name'] ?>"><?= htmlspecialchars($cuisine['name']) ?></option>
+                        <?php endforeach   ?>
                     </select>
                 </div>
 
@@ -103,10 +107,10 @@ $recipes = $recipesTable->getAll();
                 <div class="col-md-auto">
                     <select class="form-select" id="difficultyFilter" method="POST" action="_search.php">
                         <option value="">All Difficulty Levels</option>
-                        <option value="Easy">Easy</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Hard">Hard</option>
-                        <option value="Challenging">Challenging</option>
+                        <?php foreach ($difficulties as $difficulty) : ?>
+                            <option value="<?= $difficulty['name'] ?>"><?= htmlspecialchars($difficulty['name']) ?></option>
+                        <?php endforeach ?>
+
                     </select>
                 </div>
 

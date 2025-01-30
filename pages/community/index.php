@@ -1,5 +1,8 @@
-<?php require '../../env_loader.php';
+<?php
+session_start();
+require '../../env_loader.php';
 
+use Bb\Blendingbites\Helpers\Auth;
 use Bb\Blendingbites\Helpers\HTTP;
 use Bb\Blendingbites\Libs\Database\MySQL;
 use Bb\Blendingbites\Libs\Database\PostsTable;
@@ -22,7 +25,7 @@ $uploadPosts = $posts->getAll();
     <link rel="shortcut icon" href="../../public/images/favico.png" type="image/png">
     <link rel="stylesheet" href="../../public/css/font-awesome/5.10.0/all.min.css">
     <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
-    <script src="../../public/js/bootstrap/5.1.3/bootstrap.min.js"></script>
+    <script src="../../public/js/bootstrap/5.1.3/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <title>Community Cookbook</title>
@@ -37,6 +40,7 @@ $uploadPosts = $posts->getAll();
 
         <div class="container py-4 justify-content-center col-md-6">
             <!-- Section 1: Share Post -->
+
             <div class="bg-white p-3 rounded shadow-sm mb-4">
                 <div class="d-flex justify-content-between align-items-center">
                     <span class="text-black">Share Your Valuable Experience and Thoughts <br>In Our Community!<br> We're very pleased to share Posts & Comments!</span>

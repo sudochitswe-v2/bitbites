@@ -1,5 +1,7 @@
 <?php
+session_start();
 
+use Bb\Blendingbites\Helpers\HTTP;
 use Bb\Blendingbites\Libs\Database\MySQL;
 use Bb\Blendingbites\Libs\Database\UsersTable;
 
@@ -8,7 +10,7 @@ require '../../env_loader.php';
 $users = new UsersTable(new MySQL());
 
 $id = $_GET['id'] ?? null;
-$user = $users->getById($id); 
+$user = $users->getById($id);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = [
@@ -24,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Ensure all fields are properly set
     if (!empty($data['name']) && !empty($data['email'])) {
-        $users->update($data); 
+        $users->update($data);
         header('Location: users.php');
         exit;
     } else {
@@ -68,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </select>
             </div>
             <button class="btn btn-success">Update User</button>
-            <a href="users.php" class="btn btn-secondary">Cancel</a>
+            <a href="<?= HTTP::url("/admin/users/") ?>" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
 </body>

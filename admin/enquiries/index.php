@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 use Bb\Blendingbites\Libs\Database\MySQL;
 use Bb\Blendingbites\Libs\Database\EnquiriesTable;

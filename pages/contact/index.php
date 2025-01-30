@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 use Bb\Blendingbites\Libs\Database\EnquiriesTable;
 use Bb\Blendingbites\Libs\Database\MySQL;
@@ -36,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="shortcut icon" href="../../public/images/favico.png" type="image/png">
     <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/css/font-awesome/5.10.0/all.min.css">
-    <script src="../../public/js/bootstrap/5.1.3/bootstrap.min.js"></script>
+    <script src="../../public/js/bootstrap/5.1.3/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         body {

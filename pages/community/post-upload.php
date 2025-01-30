@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 use Bb\Blendingbites\Helpers\Auth;
 use Bb\Blendingbites\Helpers\HTTP;
@@ -7,6 +8,8 @@ use Bb\Blendingbites\Libs\Database\MySQL;
 use Bb\Blendingbites\Libs\Database\PostsTable;
 
 require '../../env_loader.php';
+
+Auth::needLogin();
 
 // Initialize the database connection and PostsTable
 $db = new MySQL();
@@ -59,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="shortcut icon" href="../../public/images/favico.png" type="image/png">
     <link rel="stylesheet" href="../../public/css/font-awesome/5.10.0/all.min.css">
     <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
-    <script src="../../public/js/bootstrap/5.1.3/bootstrap.min.js"></script>
+    <script src="../../public/js/bootstrap/5.1.3/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <title>Upload Post</title>
 </head>

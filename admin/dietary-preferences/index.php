@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 use Bb\Blendingbites\Libs\Database\DietaryPreferencesTable;
 use Bb\Blendingbites\Libs\Database\MySQL;

@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../../env_loader.php';
 
 use Bb\Blendingbites\Helpers\HTTP;

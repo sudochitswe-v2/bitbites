@@ -1,11 +1,11 @@
 <?php
+session_start();
 
 use Bb\Blendingbites\Helpers\HTTP;
 
 include 'env_loader.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    session_start();
     $data = [
         'first_name' => $_POST['first_name'],
         'last_name' => $_POST['last_name'],

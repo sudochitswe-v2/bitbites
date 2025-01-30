@@ -1,4 +1,7 @@
-<?php require_once '../../env_loader.php'; ?>
+<?php
+session_start();
+require_once '../../env_loader.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +14,7 @@
     <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/css/font-awesome/5.10.0/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../../public/js/bootstrap/5.1.3/bootstrap.min.js"></script>
+    <script src="../../public/js/bootstrap/5.1.3/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
     <title>Educational Resources</title>
@@ -141,7 +144,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Infographics -->
         <h2 class="text-center mb-4">Watch And Download Infographics</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4">

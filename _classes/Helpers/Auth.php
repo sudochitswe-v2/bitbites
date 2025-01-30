@@ -7,7 +7,6 @@ class Auth
 
     static function check()
     {
-        session_start();
         if (isset($_SESSION['user'])) {
             return $_SESSION['user'];
         } else return false;
@@ -15,7 +14,7 @@ class Auth
     static function needLogin()
     {
         if (!self::check()) {
-            HTTP::redirect("/login.php");
+            HTTP::redirect("/pages/auth/login.php");
         }
     }
     static function requireAdminAccess()

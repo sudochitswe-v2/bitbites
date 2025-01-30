@@ -1,6 +1,7 @@
 <?php
+session_start();
 
-use Bb\Blendingbites\Helpers\HTTP;
+use Bb\Blendingbites\Helpers\Auth;
 use Bb\Blendingbites\Libs\Database\MySQL;
 use Bb\Blendingbites\Libs\Database\PostsTable;
 
@@ -23,7 +24,7 @@ $post = $postsTable->detail($id);
     <link rel="shortcut icon" href="../../public/images/favico.png" type="image/png">
     <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/css/font-awesome/5.10.0/all.min.css">
-    <script src="../../public/js/bootstrap/5.1.3/bootstrap.min.js"></script>
+    <script src="../../public/js/bootstrap/5.1.3/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <title>Post Detail</title>
 </head>
@@ -67,22 +68,47 @@ $post = $postsTable->detail($id);
                 </div>
 
                 <div class="p-3 bg-white border-top">
-
                     <!-- Display Existing Comments -->
                     <?php foreach ($post['comments'] as $comment): ?>
-                        <div class="mb-2">
-                            <strong><?= htmlspecialchars($comment['user_name']) ?></strong>
-                            <p class="mb-1"><?= htmlspecialchars($comment['content']) ?></p>
-                            <hr class="text-muted">
-                        </div>
+                        <form action="_comment.php?<?= $comment['id'] ?>" method="post">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="id" value="<?= $comment['id'] ?>">
+                            <input type="hidden" name="url" value="<?= $_SERVER['REQUEST_URI'] ?>">
+                            <div class="mb-2">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <strong>
+                                            <?= htmlspecialchars($comment['user_name']) ?>
+                                        </strong>
+                                        <p class="mb-1">
+                                            <?= htmlspecialchars($comment['content']) ?>
+                                        </p>
+                                    </div>
+                                    <?php if (Auth::check() && $comment['user_id'] === Auth::check()->id): ?>
+                                        <button type="submit" class="btn btn-sm btn-danger"
+                                            onclick="return confirm('Are you sure?')">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    <?php endif; ?>
+                                </div>
+                                <hr class="text-muted">
+                            </div>
+                        </form>
                     <?php endforeach; ?>
 
-                    <div class="input-group mt-3">
-                        <input type="text" class="form-control comment-box" placeholder="Write your comment">
-                        <span class="input-group-text bg-white">
-                            <i class="bi bi-send"></i>
-                        </span>
-                    </div>
+                    <?php if (Auth::check()): ?>
+                        <form action="_comment.php" method="post">
+                            <div class="input-group mt-3">
+                                <input type="hidden" name="_method" value="POST">
+                                <input type="hidden" name="post_id" value="<?= $post['id'] ?>">
+                                <input type="hidden" name="url" value="<?= $_SERVER['REQUEST_URI'] ?>">
+                                <input type="text" name="content" class="form-control comment-box" placeholder="Write your comment">
+                                <button type="submit" class="input-group-text bg-white">
+                                    <i class="bi bi-send"></i>
+                                </button>
+                            </div>
+                        </form>
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="text-end">

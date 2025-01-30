@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 use Bb\Blendingbites\Helpers\HTTP;
 use Bb\Blendingbites\Libs\Database\MySQL;

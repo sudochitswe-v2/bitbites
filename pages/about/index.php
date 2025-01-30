@@ -4,6 +4,7 @@
 <header>
 
     <?php
+    session_start();
     require_once '../../env_loader.php';
     include '../../_layout/nav_bar.php'
     ?>
@@ -18,7 +19,7 @@
     <link rel="stylesheet" href="../../public/css/bootstrap/5.1.3/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/css/font-awesome/5.10.0/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <script src="../../public/js/bootstrap/5.1.3/bootstrap.min.js"></script>
+    <script src="../../public/js/bootstrap/5.1.3/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
     <style>
@@ -243,43 +244,43 @@
                 <div class="team-card p-3 shadow">
                     <img src="../../public/images/avater4.jpg" alt="Team Member">
                     <h5 class="mt-3">Seinn
-                    <p>Project Manager</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-twitter"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                    </div>
+                        <p>Project Manager</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                        </div>
                 </div>
             </div>
         </div>
-        </div>
-        <div class="text-start fs-6 px-5">
-            <p>
-            <ul class>
-                <li><strong>Emma</strong>: Crafting the visual magic of our website, our front-end designer ensures an intuitive and stunning user experience, bringing every click and scroll to life with vibrant design and creativity.</li>
+    </div>
+    <div class="text-start fs-6 px-5">
+        <p>
+        <ul class>
+            <li><strong>Emma</strong>: Crafting the visual magic of our website, our front-end designer ensures an intuitive and stunning user experience, bringing every click and scroll to life with vibrant design and creativity.</li>
+            <br>
+            <li><strong>Kevin</strong>: Behind the scenes, our back-end developer ensures that Food Fusion runs smoothly and efficiently, managing the technical side to provide a seamless digital experience.</li>
+            <br>
+            <li><strong>Lei Lei</strong>: The backbone of our operations, our admin oversees day-to-day tasks and keeps everything organized, ensuring Food Fusion stays on track and thriving.</li>
+            <br>
+            <li><strong> Seinn</strong>: Leading the charge, our General Manager combines strategic vision with operational excellence to ensure that Food Fusion continues to innovate and inspire in the culinary world.
                 <br>
-                <li><strong>Kevin</strong>: Behind the scenes, our back-end developer ensures that Food Fusion runs smoothly and efficiently, managing the technical side to provide a seamless digital experience.</li>
-                <br>
-                <li><strong>Lei Lei</strong>: The backbone of our operations, our admin oversees day-to-day tasks and keeps everything organized, ensuring Food Fusion stays on track and thriving.</li>
-                <br>
-                <li><strong> Seinn</strong>: Leading the charge, our General Manager combines strategic vision with operational excellence to ensure that Food Fusion continues to innovate and inspire in the culinary world.
-                    <br>
-            </ul>
-            <h5 class="text-center"><Strong>"Together, our team works with passion and dedication to bring you the best of Food Fusion."</strong></h5>
-            </p>
-        </div>
+        </ul>
+        <h5 class="text-center"><Strong>"Together, our team works with passion and dedication to bring you the best of Food Fusion."</strong></h5>
+        </p>
+    </div>
 
-        <!-- Bootstrap JS -->
-        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-        <script>
-            AOS.init();
-            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-                return new bootstrap.Tooltip(tooltipTriggerEl);
-            });
-        </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    </script>
 
-        <?php include '../../_layout/footer.php' ?>
+    <?php include '../../_layout/footer.php' ?>
 
 </body>
 

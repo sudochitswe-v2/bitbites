@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php require '../env_loader.php'; ?>
+<?php
+session_start();
+require '../env_loader.php';
+?>
 
 <head>
     <meta charset="UTF-8">

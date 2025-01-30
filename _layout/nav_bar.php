@@ -55,7 +55,7 @@ $authUser = $isAuth ? $_SESSION['user'] : null;
         <div class="navbar-nav ms-auto py-0 pe-4">
             <a href="<?= HTTP::url('/pages/recipes') ?>" class="nav-item nav-link active">Recipe</a>
             <a href="<?= HTTP::url('/pages/about') ?>" class="nav-item nav-link">About</a>
-            <a href="#" class="nav-item nav-link">Community</a>
+            <a href="<?= HTTP::url('/pages/community') ?>" class="nav-item nav-link">Community</a>
             <a href="<?= HTTP::url('/pages/contact') ?>" class="nav-item nav-link">Contact Us</a>
             <div class="dropdown">
                 <a href="#"
@@ -66,8 +66,8 @@ $authUser = $isAuth ? $_SESSION['user'] : null;
                     aria-expanded="false">Resources
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a href="#" class="dropdown-item">Culinary Resources</a>
-                    <a href="#" class="dropdown-item">Educational Resources</a>
+                    <a href="<?= HTTP::url('/pages/resources/culinary.php') ?>" class="dropdown-item">Culinary Resources</a>
+                    <a href="<?= HTTP::url('/pages/resources/educational.php') ?>" class="dropdown-item">Educational Resources</a>
                 </div>
             </div>
         </div>
@@ -101,20 +101,21 @@ $authUser = $isAuth ? $_SESSION['user'] : null;
 
     <!-- Cookie Consent Banner -->
     <div id="cookieBanner" class="position-fixed bottom-0 start-50 translate-middle-x p-3 bg-light shadow rounded w-75" style="z-index: 1050;">
-        <div class="d-flex align-items-center">
-            <div class="flex-grow-1">
-                <h5 class="fw-bold">We use cookies!</h5>
-                <p class="mb-2">Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent.
-                    <a href="#" class="text-black fw-semibold">Let me choose</a>
-                </p>
-            </div>
+        <div>
+            <h5 class="fw-bold">We use cookies!</h5>
+            <p class="mb-2">
+                Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent.
+                <a href="<?= HTTP::url('/pages/privacy/index.php'); ?>" class="text-black fw-semibold">Learn More About Cookie</a>
+            </p>
+        </div>
 
-            <div class=" flex-column ms-4">
-                <button id="acceptCookies" class="btn btn-dark mb-2">Accept all</button>
-                <button id="rejectCookies" class="btn btn-light border-dark">Reject all</button>
-            </div>
+        <!-- Button Container -->
+        <div class="mt-2 text-start">
+            <button id="acceptCookies" class="btn btn-dark">Accept all</button>
+            <button id="rejectCookies" class="btn btn-light border-dark">Reject all</button>
         </div>
     </div>
+
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

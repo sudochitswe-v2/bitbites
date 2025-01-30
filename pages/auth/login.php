@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $message = "please wait $minutes minutes and $seconds seconds";
 
-        HTTP::redirect('/pages/login.php', ['blocked' => $message]);
+        HTTP::redirect('/pages/auth/login.php', ['blocked' => $message]);
     }
 
     if ($has_blocked && $_SESSION['blocked_at'] < time()) {
@@ -103,13 +103,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <input type="password" name="password" class="form-control mb-2" placeholder="Password" required>
 
-            <button type="submit" class="w-100 btn btn-lg btn-primary text-black">
+            <button type="submit" class="w-50 btn btn-md btn-primary text-black">
                 Login
             </button>
         </form>
-        <br>
-
-        <a href="<?= HTTP::url('/pages/auth/register.php'); ?>">Register</a>
+        <br> Doesn't Have an Account Yet?
+        <a href="<?= HTTP::url('/pages/auth/register.php'); ?>" class="text-black">Register</a>
     </div>
 </body>
 

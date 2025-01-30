@@ -139,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <!-- Privacy Policy Checkbox -->
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="privacyPolicy" required>
-                            <label class="form-check-label" for="privacyPolicy">I agree to the privacy policy</label>
+                            <label class="form-check-label" for="privacyPolicy">I agree to the <a href="../privacy/index.php" class="text-black">privacy policy</a></label>
                         </div>
                         <!-- Submit Button -->
                         <button type="submit" class="btn btn-outline-primary text-black w-100">Send Message</button>

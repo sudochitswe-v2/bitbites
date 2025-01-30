@@ -1,5 +1,6 @@
 <?php
 include '../../env_loader.php';
+session_start();
 
 use Bb\Blendingbites\Helpers\HTTP;
 use Bb\Blendingbites\Helpers\ImageHandler;
@@ -20,24 +21,34 @@ try {
             "last_name" => $_POST['last_name'],
             "name" => $_POST['first_name'] . ' ' . $_POST['last_name'],
             "profile" => $image,
+            "date_of_birth" => $_POST['date_of_birth'],
             "phone" => $_POST['phone'],
             "email" => $_POST['email'] ?? 'Unknown',
             "password" => md5($_POST['password']),
             "role_id" => 1,
         ];
 
+
         // create connection to users table
         $table = new UsersTable(new MySQL());
 
         // insert register data
         $table->insert($data);
-
-        HTTP::redirect('/pages/login.php', ["registered" => true]);
+        unset($_SESSION['signup_data']);
+        HTTP::redirect('/pages/auth/login.php', ["registered" => true]);
     }
 } catch (Throwable $e) {
 
     $_GET['error'] = $e->getMessage();
 }
+
+$formdata = isset($_SESSION['signup_data']) ? $_SESSION['signup_data'] : [];
+$fname = isset($formdata['first_name']) ? $formdata['first_name'] : '';
+$lname = isset($formdata['last_name']) ? $formdata['last_name'] : '';
+$dob = isset($formdata['date_of_birth']) ? $formdata['date_of_birth'] : '';
+$email = isset($formdata['email']) ? $formdata['email'] : '';
+$password = isset($formdata['password']) ? $formdata['password'] : '';
+
 ?>
 
 <!DOCTYPE html>
@@ -74,24 +85,24 @@ try {
             </div>
             <br>
 
-            <input type="text" name="first_name" class="form-control mb-2" placeholder="First Name" required>
+            <input type="text" name="first_name" class="form-control mb-2" placeholder="First Name" value="<?= $fname ?>" required>
 
-            <input type="text" name="last_name" class="form-control mb-2" placeholder="Last Name" required>
+            <input type="text" name="last_name" class="form-control mb-2" placeholder="Last Name" value="<?= $lname ?>" required>
 
-            <input type="date" name="date_of_birth" class="form-control mb-2" placeholder="Date of Birth" required>
+            <input type="date" id="date_of_birth" name="date_of_birth" class="form-control mb-2" onfocus="this.type='date'" onblur="if(this.value=='<?= $dob ?>'){this.type='text'}" placeholder="Date of Birth">
 
             <input type="text" name="phone" class="form-control mb-2" placeholder="Phone Number" required>
 
-            <input type="email" name="email" class="form-control mb-2" placeholder="Email Address" required>
+            <input type="email" name="email" class="form-control mb-2" placeholder="Email Address" value="<?= $email ?>" required>
 
-            <input type="password" name="password" class="form-control mb-2" placeholder="Password" required>
+            <input type="password" name="password" class="form-control mb-2" placeholder="Password" value="<?= $password ?>" required>
 
             <button type="submit" class="w-50 btn btn-md mt-1 btn-primary text-black">
                 Register
             </button>
         </form>
 
-        <a href="login.php" class="w-50 btn btn-md mt-1 btn-primary text-black">Login</a> <br>
+        <a href="login.php" class="w-50 text-black "> Already Have an Account? Login</a> <br>
         <a href="<?= HTTP::url('/'); ?>" class="text-black">Back To Home</a>
     </div>
 </body>

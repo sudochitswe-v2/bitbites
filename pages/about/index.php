@@ -200,7 +200,7 @@
             <div class="col-md-3">
                 <div class="team-card p-3 shadow">
                     <img src="../../public/images/avater1.jpg" alt="Team Member">
-                    <h5 class="mt-3">John Doe</h5>
+                    <h5 class="mt-3">Emma</h5>
                     <p>Frontend Developer</p>
                     <div class="social-icons">
                         <a href="#"><i class="bi bi-facebook"></i></a>
@@ -214,7 +214,7 @@
             <div class="col-md-3">
                 <div class="team-card p-3 shadow">
                     <img src="../../public/images/avater2.jpg" alt="Team Member">
-                    <h5 class="mt-3">Jane Smith</h5>
+                    <h5 class="mt-3">Kevin</h5>
                     <p>Backend Developer</p>
                     <div class="social-icons">
                         <a href="#"><i class="bi bi-facebook"></i></a>
@@ -228,8 +228,8 @@
             <div class="col-md-3">
                 <div class="team-card p-3 shadow">
                     <img src="../../public/images/avater3.jpg" alt="Team Member">
-                    <h5 class="mt-3">Alice Brown</h5>
-                    <p>UI/UX Designer</p>
+                    <h5 class="mt-3">Lei Lei</h5>
+                    <p>Admin</p>
                     <div class="social-icons">
                         <a href="#"><i class="bi bi-facebook"></i></a>
                         <a href="#"><i class="bi bi-twitter"></i></a>
@@ -242,7 +242,7 @@
             <div class="col-md-3">
                 <div class="team-card p-3 shadow">
                     <img src="../../public/images/avater4.jpg" alt="Team Member">
-                    <h5 class="mt-3">Mike Johnson</h5>
+                    <h5 class="mt-3">Seinn
                     <p>Project Manager</p>
                     <div class="social-icons">
                         <a href="#"><i class="bi bi-facebook"></i></a>
@@ -253,19 +253,19 @@
             </div>
         </div>
         </div>
-        <div class="text-center px-5">
+        <div class="text-start fs-6 px-5">
             <p>
             <ul class>
-                <li><strong>Emma As a Front-End Designer</strong>: Crafting the visual magic of our website, our front-end designer ensures an intuitive and stunning user experience, bringing every click and scroll to life with vibrant design and creativity.</li>
+                <li><strong>Emma</strong>: Crafting the visual magic of our website, our front-end designer ensures an intuitive and stunning user experience, bringing every click and scroll to life with vibrant design and creativity.</li>
                 <br>
-                <li><strong>Kevin As Back-End Developer</strong>: Behind the scenes, our back-end developer ensures that Food Fusion runs smoothly and efficiently, managing the technical side to provide a seamless digital experience.</li>
+                <li><strong>Kevin</strong>: Behind the scenes, our back-end developer ensures that Food Fusion runs smoothly and efficiently, managing the technical side to provide a seamless digital experience.</li>
                 <br>
-                <li><strong>Lei Lei As Admin</strong>: The backbone of our operations, our admin oversees day-to-day tasks and keeps everything organized, ensuring Food Fusion stays on track and thriving.</li>
+                <li><strong>Lei Lei</strong>: The backbone of our operations, our admin oversees day-to-day tasks and keeps everything organized, ensuring Food Fusion stays on track and thriving.</li>
                 <br>
-                <li><strong> Seinn As a General Manager</strong>: Leading the charge, our General Manager combines strategic vision with operational excellence to ensure that Food Fusion continues to innovate and inspire in the culinary world.
+                <li><strong> Seinn</strong>: Leading the charge, our General Manager combines strategic vision with operational excellence to ensure that Food Fusion continues to innovate and inspire in the culinary world.
                     <br>
             </ul>
-            <h5><Strong>"Together, our team works with passion and dedication to bring you the best of Food Fusion."</strong></h5>
+            <h5 class="text-center"><Strong>"Together, our team works with passion and dedication to bring you the best of Food Fusion."</strong></h5>
             </p>
         </div>
 

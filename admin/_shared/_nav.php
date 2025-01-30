@@ -13,6 +13,8 @@ Auth::requireAdminAccess();
         <a href="<?= HTTP::url('/admin/recipes') ?>" class="nav-link fw-semibold text-black">Recipes</a>
         <a href="<?= HTTP::url('/admin/dietary-preferences') ?>" class="nav-link fw-semibold text-black">Dietary Preferences</a>
         <a href="<?= HTTP::url('/admin/enquiries') ?>" class="nav-link fw-semibold text-black">Enquiries</a>
+        <a href="<?= HTTP::url('/admin/users') ?>" class="nav-link fw-semibold text-black">Manage Users</a>
+
         <a href="<?= HTTP::url('/') ?>" class="nav-link text-black">
             <i class="fa fa-arrow-left text-black"></i> Back to Website
         </a>

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<header>
-    <?php
-    include '../../env_loader.php';
 
-    use Bb\Blendingbites\Helpers\HTTP;
-    use Bb\Blendingbites\Libs\Database\MySQL;
-    use Bb\Blendingbites\Libs\Database\RecipesTable;
+<?php
+include '../../env_loader.php';
 
-    $recipesTable = new RecipesTable(new MySQL());
-    $recipes = $recipesTable->getAll();
-    include '../../_layout/nav_bar.php';
-    ?>
-</header>
+use Bb\Blendingbites\Helpers\HTTP;
+use Bb\Blendingbites\Libs\Database\MySQL;
+use Bb\Blendingbites\Libs\Database\RecipesTable;
+
+$recipesTable = new RecipesTable(new MySQL());
+$recipes = $recipesTable->getAll();
+
+?>
+
 
 <head>
     <meta charset="UTF-8">
@@ -26,15 +26,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../../public/js/bootstrap/5.1.3/bootstrap.min.js"></script>
     <script src="../../public/js/bootstrap/5.1.3/bootstrap.bundle.min.js"></script>
-
 </head>
+<header>
+    <?php include '../../_layout/nav_bar.php'; ?>
+</header>
 <style>
     body {
         background-color: rgb(210, 201, 201);
     }
 
-    .input-group .form-control:hover,
-    .input-group .form-control:focus {
+    .form-select:hover,
+    .form-select:focus {
         box-shadow: none;
         border-color: rgb(0, 0, 0);
     }
@@ -55,7 +57,7 @@
     }
 </style>
 
-<body>
+<body style="background: var(--primary);">
     <!-- Welcome Section -->
     <section class="welcome-section position-relative text-center">
         <div class="welcome-content">
@@ -70,44 +72,44 @@
             <h2 class="mb-4">Find Your Favorite Recipes</h2>
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <form id="search" method="POST" action="hidden">
+                    <form id="search" method="POST" action="_search.php">
 
                         <div class="input-group">
                             <button class="btn btn-outline-secondary" type="submit" id="search-button">
                                 <i class="fa fa-search"></i>
                             </button>
-                            <input type="text" name="name" class="form-control" placeholder="Search for recipes..." aria-label="Search">
+                            <input type="text" id="searchInput" name="name" class="form-control" placeholder="Search for recipes..." aria-label="Search">
 
 
                         </div>
                     </form>
                 </div>
+                <!-- Cuisine Filter -->
                 <div class="col-md-auto">
-                    <div class="dropdown">
-                        <button class="btn btn-outline-dark dropdown-toggle" type="button" id="spicyDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            Cuisine
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="spicyDropdown">
-                            <li><a class="dropdown-item" href="#">Asian</a></li>
-                            <li><a class="dropdown-item" href="#">Western</a></li>
-                            <li><a class="dropdown-item" href="#">European</a></li>
-                        </ul>
-                    </div>
+                    <select class="form-select" id="cuisineFilter" methos="POST" action="_search.php">
+                        <option value="">All Cuisines</option>
+                        <option value="Asian Cuisine">Asian Cuisine</option>
+                        <option value="Western Cuisine">Western Cuisine</option>
+                        <option value="Mediterranean Cuisine">Mediterranean Cuisine</option>
+                        <option value="Latin American Cuisine">Latin American Cuisine</option>
+                        <option value="Asian-Mexican Cuisine">Asian-Mexican Cuisine</option>
+                        <option value="European Cuisine">European Cuisine</option>
+                        <option value="Middle Eastern Cuisine">Middle Eastern Cuisine</option>
+                        <option value="Asian Italian Cuisine">Asian-Italian Cuisine</option>
+                    </select>
                 </div>
 
+                <!-- Difficulty Filter -->
                 <div class="col-md-auto">
-                    <div class="dropdown">
-                        <button class="btn btn-outline-dark dropdown-toggle" type="button" id="drinksDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            Difficulities Level
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="drinksDropdown">
-                            <li><a class="dropdown-item" href="#">Easy</a></li>
-                            <li><a class="dropdown-item" href="#">Medium</a></li>
-                            <li><a class="dropdown-item" href="#">Hard</a></li>
-                            <li><a class="dropdown-item" href="#">Challenging</a></li>
-                        </ul>
-                    </div>
+                    <select class="form-select" id="difficultyFilter" method="POST" action="_search.php">
+                        <option value="">All Difficulty Levels</option>
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                        <option value="Challenging">Challenging</option>
+                    </select>
                 </div>
+
             </div>
         </div>
     </section>
@@ -127,7 +129,7 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="fw-bold"><?= htmlspecialchars($recipe['name']) ?></span>
                                     <div class="d-flex align-items-center">
-                                        <i class="far fa-heart text-danger me-1 heart-icon" onclick="increaseLikes(this)"></i>
+                                        <i class="far fa-heart text-danger me-1 heart-icon" onclick="increaseLikes(this, <?= $recipe['id'] ?>)"></i>
                                         <span class="like-count"><?= htmlspecialchars(count($recipe['liked_user_ids'])) ?></span>
                                     </div>
                                     <span class="text-muted"><?= htmlspecialchars($recipe['difficulty']['name']) ?></span>
@@ -151,15 +153,24 @@
 </body>
 
 <script>
-    function increaseLikes(heart) {
+    function increaseLikes(heart, recipeId) {
         let likeCount = heart.nextElementSibling;
         let count = parseInt(likeCount.innerText);
         count += 1;
         likeCount.innerText = count;
 
-        heart.classList.remove('bi-heart');
-        heart.classList.add('bi-heart-fill');
+        $.post('_like.php', {
+            recipe_id: recipeId
+        }, function(response) {
+            if (response.success) {
+                heart.classList.remove('fa-heart');
+                heart.classList.add('fa-heart-fill');
+            } else {
+                alert("Failed to like the recipe.");
+            }
+        }, 'json');
     }
+
     $(document).ready(function() {
         $('#search').on('submit', function(e) {
             e.preventDefault();
@@ -173,6 +184,32 @@
             })
         })
     })
+
+
+    $(document).ready(function() {
+        function applyFilters() {
+            let search = $('#searchInput').val();
+            let cuisine = $('#cuisineFilter').val();
+            let difficulty = $('#difficultyFilter').val();
+
+            $.ajax({
+                url: '_search.php',
+                type: 'POST',
+                data: {
+                    search: search,
+                    cuisine: cuisine,
+                    difficulty: difficulty
+                },
+                success: function(response) {
+                    $('#recipesGrid').html(response);
+                }
+            });
+        }
+
+        $('#searchInput, #cuisineFilter, #difficultyFilter').on('change keyup', function() {
+            applyFilters();
+        });
+    });
 </script>
 
 </html>

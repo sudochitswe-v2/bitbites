@@ -1,3 +1,21 @@
+<?php
+
+use Bb\Blendingbites\Helpers\HTTP;
+
+include 'env_loader.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    session_start();
+    $data = [
+        'first_name' => $_POST['first_name'],
+        'last_name' => $_POST['last_name'],
+        'email' => $_POST['email'],
+        'password' => $_POST['password']
+    ];
+    $_SESSION['signup_data'] = $data;
+    HTTP::redirect('/pages/auth/register.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,26 +36,10 @@
         transition: opacity 0.3s ease-in-out;
     }
 </style>
-<?php
 
-use Bb\Blendingbites\Helpers\HTTP;
-
-include 'env_loader.php'; ?>
 <header>
     <?php include '_layout/nav_bar.php'; ?>
 </header>
-<?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $data = [
-        'first_name' => $_POST['first_name'],
-        'last_name' => $_POST['last_name'],
-        'email' => $_POST['email'],
-        'password' => $_POST['password']
-    ];
-    $_SESSION['signup_data'] = $data;
-    HTTP::redirect('/pages/auth/register.php');
-}
-?>
 
 <body>
     <?php include '_layout/home/home.php' ?>

@@ -160,28 +160,32 @@ class RecipesTable
         $difficulty = $difficultiesTable->getById($recipe['difficulty_id']);
         $recipe['difficulty'] = $difficulty;
         $recipe['cuisine'] = $cuisine;
+        $recipe['dietary_preferences'] = self::getDietaryPreferences($id);
         return $recipe;
     }
-    public function update($data)
+    public function update($data, $dietaryPreferencesIds)
     {
         $updateQuery = "UPDATE recipes SET name = :name,difficulty_id = :difficulty_id ,cuisine_id = :cuisine_id, short_description = :short_description, 
         image = :image, description = :description, ingredients_description=:ingredients_description WHERE id = :id";
         $updateStmt = $this->db->prepare($updateQuery);
         $updateStmt->execute($data);
+        self::deleteRecipeDietaryPreferences($data['id']);
+        self::createAllDietaryPreferences($data['id'], $dietaryPreferencesIds);
     }
 
-    public function insert($data)
+    public function insert($data, $dietaryPreferencesIds)
     {
         $insertQuery = "INSERT INTO recipes (name, difficulty_id, cuisine_id,short_description, image, description,ingredients_description) 
         VALUES (:name,:difficulty_id, :cuisine_id, :short_description,:image, :description,:ingredients_description)";
         $insertStmt = $this->db->prepare($insertQuery);
-        return $insertStmt->execute($data);
+        $insertStmt->execute($data);
+        $id = $this->db->lastInsertId();
+        self::createAllDietaryPreferences($id, $dietaryPreferencesIds);
     }
 
     public function filterByCuisineAndDifficulty($search = '', $cuisine = '', $difficulty = '')
     {
-        $sql = "
-    SELECT
+        $sql = "SELECT
         r.id AS recipe_id,
         r.name AS recipe_name,
         r.image,
@@ -200,14 +204,13 @@ class RecipesTable
 
         f.user_id AS liked_user_id
 
-    FROM recipes r
-    LEFT JOIN recipe_dietary_preferences rdp ON r.id = rdp.recipe_id
-    LEFT JOIN dietary_preferences dp ON rdp.dietary_preference_id = dp.id
-    LEFT JOIN difficulties d ON r.difficulty_id = d.id
-    LEFT JOIN cuisines c ON r.cuisine_id = c.id
-    LEFT JOIN favorites f ON r.id = f.recipe_id
-    WHERE 1 = 1
-";
+            FROM recipes r
+            LEFT JOIN recipe_dietary_preferences rdp ON r.id = rdp.recipe_id
+            LEFT JOIN dietary_preferences dp ON rdp.dietary_preference_id = dp.id
+            LEFT JOIN difficulties d ON r.difficulty_id = d.id
+            LEFT JOIN cuisines c ON r.cuisine_id = c.id
+            LEFT JOIN favorites f ON r.id = f.recipe_id
+            WHERE 1 = 1";
 
         $params = [];
 
@@ -237,5 +240,28 @@ class RecipesTable
 
 
         return self::groupRecipes($results);
+    }
+
+    private function deleteRecipeDietaryPreferences($recipeId)
+    {
+        $query = "DELETE FROM recipe_dietary_preferences WHERE recipe_id = :recipe_id";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([':recipe_id' => $recipeId]);
+    }
+    private function createAllDietaryPreferences($recipeId, $dietaryPreferences)
+    {
+        foreach ($dietaryPreferences as $dietaryPreference) {
+            $query = "INSERT INTO recipe_dietary_preferences (recipe_id, dietary_preference_id) VALUES (:recipe_id, :dietary_preference_id)";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute([':recipe_id' => $recipeId, ':dietary_preference_id' => $dietaryPreference]);
+            $this->db->lastInsertId();
+        }
+    }
+    private function getDietaryPreferences($recipeId)
+    {
+        $query = "SELECT dietary_preference_id FROM recipe_dietary_preferences WHERE recipe_id = :recipe_id";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([':recipe_id' => $recipeId]);
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
 }

@@ -1,15 +1,18 @@
 <?php
 
 use Bb\Blendingbites\Libs\Database\CuisinesTable;
+use Bb\Blendingbites\Libs\Database\DietaryPreferencesTable;
 use Bb\Blendingbites\Libs\Database\DifficultiesTable;
 use Bb\Blendingbites\Libs\Database\MySQL;
 
 $connection = new MySQL();
 $difficultiesTable = new DifficultiesTable($connection);
 $cuisinesTable = new CuisinesTable($connection);
+$dietaryPreferencesTable = new DietaryPreferencesTable($connection);
 
 $difficulties = $difficultiesTable->getAll();
 $cuisines = $cuisinesTable->getAll();
+$dietaryPreferences = $dietaryPreferencesTable->getAll();
 
 ?>
 <!DOCTYPE html>
@@ -95,6 +98,7 @@ $cuisines = $cuisinesTable->getAll();
                                 <?php endforeach ?>;
                         </select>
                     </div>
+
                     <div class="mb-1">
                         <label for="cuisine" class="form-label">Cuisine</label>
                         <select class="form-select" id="cuisine" name="cuisine" required>
@@ -104,6 +108,22 @@ $cuisines = $cuisinesTable->getAll();
                             <?php endforeach ?>
                         </select>
                     </div>
+                </div>
+            </div>
+            <div class="mb-1">
+                <label for="dietary_preferences" class="form-label">Dietary Preferences</label>
+                <div class="form-scrollable" style="max-height: 200px; overflow-y: auto; border: 1px solid #ced4da; padding: 10px; border-radius: 5px;">
+                    <?php foreach ($dietaryPreferences as $dietaryPreference): ?>
+                        <div class="form-check">
+                            <input
+                                type="checkbox"
+                                name="dietary_preferences_ids[]"
+                                class="form-check-input"
+                                value="<?= $dietaryPreference['id'] ?>"
+                                <?= isset($recipe) && in_array($dietaryPreference['id'], $recipe['dietary_preferences'] ?? []) ? 'checked' : '' ?>>
+                            <label class="form-check-label"><?= htmlspecialchars($dietaryPreference['name']) ?></label>
+                        </div>
+                    <?php endforeach ?>
                 </div>
             </div>
 

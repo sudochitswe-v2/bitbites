@@ -20,6 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cuisine = $_POST['cuisine'];
     $difficulty = $_POST['difficulty'];
     $ingredients = $_POST['ingredients_description'];
+    $dietaryPreferencesIds = isset($_POST['dietary_preferences_ids']) ? $_POST['dietary_preferences_ids'] : [];
+
 
 
     $data =  [
@@ -32,14 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'cuisine_id' => (int) $cuisine,
         'ingredients_description' => $ingredients,
     ];
-    print_r($_FILES);
     if ($_FILES['image']['size'] != 0) {
         $data['image'] = ImageHandler::upload($_FILES);
     }
-
-    var_dump($data);
     try {
-        $recipesTable->update($data);
+        $recipesTable->update($data, $dietaryPreferencesIds);
         HTTP::redirect('/admin/recipes');
         exit();
     } catch (PDOException $e) {

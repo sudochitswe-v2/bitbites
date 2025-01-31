@@ -51,7 +51,7 @@ $authUser = $isAuth ? $_SESSION['user'] : null;
     </div>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0 pe-4">
-            <a href="<?= HTTP::url('/pages/recipes') ?>" class="nav-item nav-link active">Recipe</a>
+            <a href="<?= HTTP::url('/pages/recipes') ?>" class="nav-item nav-link">Recipe</a>
             <a href="<?= HTTP::url('/pages/about') ?>" class="nav-item nav-link">About</a>
             <a href="<?= HTTP::url('/pages/community') ?>" class="nav-item nav-link">Community</a>
             <a href="<?= HTTP::url('/pages/contact') ?>" class="nav-item nav-link">Contact Us</a>

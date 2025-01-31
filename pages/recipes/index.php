@@ -6,6 +6,7 @@
 session_start();
 include '../../env_loader.php';
 
+use Bb\Blendingbites\Helpers\Auth;
 use Bb\Blendingbites\Helpers\HTTP;
 use Bb\Blendingbites\Libs\Database\CuisinesTable;
 use Bb\Blendingbites\Libs\Database\DifficultiesTable;
@@ -125,29 +126,10 @@ $recipes = $recipesTable->getAll();
             <div id="recipesGrid" class="row gy-4">
                 <?php foreach ($recipes as $recipe): ?>
                     <div class="col-md-6">
-                        <div class="card h-100">
-                            <a href="<?= HTTP::url('/pages/recipes/detail.php') ?>?id=<?= $recipe['id'] ?>">
-                                <img src="<?= $_ENV['BASE_PATH'] . '/' . htmlspecialchars($recipe['image']) ?>" class="card-img-top" alt="Recipe Photo">
-                            </a>
-                            <div class="card-body d-flex flex-column justify-content-between">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold"><?= htmlspecialchars($recipe['name']) ?></span>
-                                    <div class="d-flex align-items-center">
-                                        <i class="far fa-heart text-danger me-1 heart-icon" onclick="increaseLikes(this, <?= $recipe['id'] ?>)"></i>
-                                        <span class="like-count"><?= htmlspecialchars(count($recipe['liked_user_ids'])) ?></span>
-                                    </div>
-                                    <span class="text-muted"><?= htmlspecialchars($recipe['difficulty']['name']) ?></span>
-                                </div>
-                                <div class="d-flex justify-content-end">
-                                    <?php
-                                    for ($i = 1; $i <= $recipe['difficulty']['value']; $i++) {
-                                        echo '<i class="col-xs fa fa-star text-warning"></i>';
-                                    }
-                                    ?>
-                                </div>
-                                <p class="text-muted mb-0"><?= htmlspecialchars($recipe['cuisine']['name']) ?></p>
-                            </div>
+                        <div id="recipe-item-<?= $recipe['id'] ?>">
+                            <?php include '_recipe_item.php' ?>
                         </div>
+
                     </div>
                 <?php endforeach ?>
             </div>
@@ -157,39 +139,6 @@ $recipes = $recipesTable->getAll();
 </body>
 
 <script>
-    function increaseLikes(heart, recipeId) {
-        let likeCount = heart.nextElementSibling;
-        let count = parseInt(likeCount.innerText);
-        count += 1;
-        likeCount.innerText = count;
-
-        $.post('_like.php', {
-            recipe_id: recipeId
-        }, function(response) {
-            if (response.success) {
-                heart.classList.remove('fa-heart');
-                heart.classList.add('fa-heart-fill');
-            } else {
-                alert("Failed to like the recipe.");
-            }
-        }, 'json');
-    }
-
-    $(document).ready(function() {
-        $('#search').on('submit', function(e) {
-            e.preventDefault();
-            $.ajax({
-                url: '_search.php',
-                type: 'POST',
-                data: $(this).serialize(),
-                success: function(response) {
-                    $('#recipesGrid').html(response);
-                }
-            })
-        })
-    })
-
-
     $(document).ready(function() {
         function applyFilters() {
             let search = $('#searchInput').val();
@@ -210,6 +159,36 @@ $recipes = $recipesTable->getAll();
             });
         }
 
+        function like(recipeId, userId, action) {
+            $.ajax({
+                url: '_fav.php',
+                type: 'POST',
+                data: {
+                    recipe_id: recipeId,
+                    user_id: userId,
+                    action: action
+                },
+                success: function(response) {
+                    // Reload the specific recipe item dynamically
+                    $(`#recipe-item-${recipeId}`).html(response);
+                }
+            });
+        }
+
+        // Event delegation for like/dislike buttons
+        $(document).on('click', '.like-btn', function() {
+            let recipeId = $(this).data('recipe-id');
+            let userId = $(this).data('user-id');
+            like(recipeId, userId, "like");
+        });
+
+        $(document).on('click', '.dislike-btn', function() {
+            let recipeId = $(this).data('recipe-id');
+            let userId = $(this).data('user-id');
+            like(recipeId, userId, "dislike");
+        });
+
+        // Live filter updates
         $('#searchInput, #cuisineFilter, #difficultyFilter').on('change keyup', function() {
             applyFilters();
         });

@@ -264,4 +264,36 @@ class RecipesTable
         $stmt->execute([':recipe_id' => $recipeId]);
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
+    public function details($recipeId)
+    {
+        $sql = "
+SELECT
+r.id AS recipe_id,
+r.name AS recipe_name,
+r.image,
+r.short_description,
+r.description,
+dp.id AS dietary_preference_id,
+dp.name AS dietary_preference_name,
+d.id AS difficulty_id,
+d.name AS difficulty_name,
+d.value AS difficulty_value,
+c.id AS cuisine_id,
+c.name AS cuisine_name,
+f.user_id AS liked_user_id
+FROM recipes r
+LEFT JOIN recipe_dietary_preferences rdp ON r.id = rdp.recipe_id
+LEFT JOIN dietary_preferences dp ON rdp.dietary_preference_id = dp.id
+LEFT JOIN difficulties d ON r.difficulty_id = d.id
+LEFT JOIN cuisines c ON r.cuisine_id = c.id
+LEFT JOIN favorites f ON r.id = f.recipe_id
+WHERE r.id = :recipe_id;
+";
+
+        $statement = $this->db->prepare($sql);
+        $statement->execute([':recipe_id' => $recipeId]);
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $data = self::groupRecipes($results);
+        return array_values($data)[0];
+    }
 }

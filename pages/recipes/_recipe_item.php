@@ -43,5 +43,13 @@ use Bb\Blendingbites\Helpers\Auth;
             ?>
         </div>
         <p class="text-muted mb-0"><?= htmlspecialchars($recipe['cuisine']['name']) ?></p>
+        <div class="d-flex flex-wrap gap-1">
+            <?php foreach ($recipe['dietary_preferences'] as $preferences): ?>
+                <div class="badge bg-warning">
+                    <i class="fas fa-tag"></i>
+                    <?= htmlspecialchars($preferences['name']) ?>
+                </div>
+            <?php endforeach ?>
+        </div>
     </div>
 </div>
